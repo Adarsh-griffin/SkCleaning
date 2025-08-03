@@ -13,12 +13,7 @@ export default function ReadyToTransform() {
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="space-y-8">
-          {/* Animated icon */}
-          <div className="flex justify-center">
-            <div className="bg-white/10 backdrop-blur-sm rounded-full p-6 animate-bounce">
-              <Sparkles className="w-12 h-12 text-white" />
-            </div>
-          </div>
+
 
           <h2 className="text-5xl lg:text-6xl font-display font-semibold leading-tight">
             Ready to Transform 
