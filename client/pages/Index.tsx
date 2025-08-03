@@ -10,11 +10,26 @@ import {
   Phone,
   ArrowRight,
   Star,
-  Quote
+  Quote,
+  Calendar,
+  ClipboardCheck,
+  Brush,
+  CheckSquare,
+  Eye,
+  Play,
+  Pause
 } from 'lucide-react';
+import Lenis from 'lenis';
 
 export default function Index() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
+  const [beforeAfterStates, setBeforeAfterStates] = useState<{ [key: number]: 'before' | 'after' }>({
+    0: 'before',
+    1: 'before',
+    2: 'before',
+    3: 'before'
+  });
 
   const heroImages = [
     {
@@ -35,6 +50,94 @@ export default function Index() {
     }
   ];
 
+  const transformationProjects = [
+    {
+      title: "Corporate Office Deep Clean",
+      location: "IT Hub, Pune",
+      type: "Commercial",
+      before: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&brightness=0.7&contrast=0.8",
+      after: "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=800&h=600&fit=crop&brightness=1.1&saturation=1.1"
+    },
+    {
+      title: "Restaurant Kitchen Sanitization", 
+      location: "Commercial District, PCMC",
+      type: "Restaurant",
+      before: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&brightness=0.6&contrast=0.9",
+      after: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&brightness=1.2&saturation=1.2"
+    },
+    {
+      title: "Industrial Floor Cleaning",
+      location: "Manufacturing Unit, Pune", 
+      type: "Industrial",
+      before: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&h=600&fit=crop&brightness=0.7&contrast=0.8",
+      after: "https://images.unsplash.com/photo-1581092446206-53b4e9d0c0a2?w=800&h=600&fit=crop&brightness=1.1&saturation=1.1"
+    },
+    {
+      title: "Medical Facility Deep Clean",
+      location: "Healthcare Center, PCMC",
+      type: "Healthcare",
+      before: "https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?w=800&h=600&fit=crop&brightness=0.6&contrast=0.9",
+      after: "https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?w=800&h=600&fit=crop&brightness=1.2&saturation=1.2"
+    }
+  ];
+
+  const workflowSteps = [
+    {
+      id: 1,
+      title: "Initial Consultation",
+      description: "We assess your space and understand your specific cleaning requirements",
+      icon: <Calendar className="w-8 h-8" />,
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      id: 2,
+      title: "Custom Planning",
+      description: "Create a tailored cleaning plan with timeline and methodology",
+      icon: <ClipboardCheck className="w-8 h-8" />,
+      color: "from-green-500 to-green-600"
+    },
+    {
+      id: 3,
+      title: "Professional Execution",
+      description: "Our trained team performs deep cleaning using advanced equipment",
+      icon: <Brush className="w-8 h-8" />,
+      color: "from-purple-500 to-purple-600"
+    },
+    {
+      id: 4,
+      title: "Quality Inspection",
+      description: "Final walkthrough and quality assurance before project completion",
+      icon: <CheckSquare className="w-8 h-8" />,
+      color: "from-orange-500 to-orange-600"
+    }
+  ];
+
+  // Initialize Lenis smooth scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      direction: 'vertical',
+      gestureDirection: 'vertical',
+      smooth: true,
+      mouseMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   // Auto-cycle images every 4 seconds
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,17 +147,38 @@ export default function Index() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
+  // Auto-cycle workflow steps every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % workflowSteps.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [workflowSteps.length]);
+
+  const toggleBeforeAfter = (index: number) => {
+    setBeforeAfterStates(prev => ({
+      ...prev,
+      [index]: prev[index] === 'before' ? 'after' : 'before'
+    }));
+  };
+
   return (
     <div className="min-h-screen">
-      {/* Minimalistic Hero Section */}
-      <section className="relative min-h-screen bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Premium Hero Section */}
+      <section className="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-white overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234F46E5' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center min-h-screen py-20">
             
-            {/* Content Side */}
             <div className="space-y-12">
               <div className="space-y-8">
-                <div className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-full text-slate-700 text-sm font-medium">
+                <div className="inline-flex items-center px-4 py-2 bg-slate-100 rounded-full text-slate-700 text-sm font-medium animate-pulse">
                   <Shield className="w-4 h-4 mr-2" />
                   Trusted by Industry Leaders
                 </div>
@@ -74,28 +198,27 @@ export default function Index() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl transition-all duration-300">
+                <Button size="lg" className="text-lg px-8 py-4 bg-slate-900 hover:bg-slate-800 text-white rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-xl">
                   Get Quote
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-xl transition-all duration-300">
+                <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-xl transition-all duration-300 hover:scale-105">
                   <Phone className="mr-2 w-5 h-5" />
                   92094 47145
                 </Button>
               </div>
 
-              {/* Simple Stats */}
               <div className="grid grid-cols-3 gap-8 pt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-display font-semibold text-slate-900 mb-1">100+</div>
+                <div className="text-center group">
+                  <div className="text-3xl font-display font-semibold text-slate-900 mb-1 transition-transform duration-300 group-hover:scale-110">100+</div>
                   <div className="text-sm text-slate-500">Projects</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-display font-semibold text-slate-900 mb-1">95%</div>
+                <div className="text-center group">
+                  <div className="text-3xl font-display font-semibold text-slate-900 mb-1 transition-transform duration-300 group-hover:scale-110">95%</div>
                   <div className="text-sm text-slate-500">Satisfaction</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-display font-semibold text-slate-900 mb-1">24/7</div>
+                <div className="text-center group">
+                  <div className="text-3xl font-display font-semibold text-slate-900 mb-1 transition-transform duration-300 group-hover:scale-110">24/7</div>
                   <div className="text-sm text-slate-500">Support</div>
                 </div>
               </div>
@@ -104,31 +227,29 @@ export default function Index() {
             {/* Cycling Images Side */}
             <div className="lg:justify-self-end">
               <div className="relative">
-                <div className="aspect-[4/5] max-w-lg mx-auto relative overflow-hidden rounded-3xl bg-slate-100">
+                <div className="aspect-[4/5] max-w-lg mx-auto relative overflow-hidden rounded-3xl bg-slate-100 shadow-2xl">
                   {heroImages.map((image, index) => (
                     <img
                       key={index}
                       src={image.url}
                       alt={image.alt}
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                        index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${
+                        index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
                       }`}
                     />
                   ))}
                   
-                  {/* Image Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   
-                  {/* Image Indicators */}
                   <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {heroImages.map((_, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        className={`h-2 rounded-full transition-all duration-300 ${
                           index === currentImageIndex 
                             ? 'bg-white w-8' 
-                            : 'bg-white/50'
+                            : 'bg-white/50 w-2'
                         }`}
                       />
                     ))}
@@ -136,6 +257,78 @@ export default function Index() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Transformations Section */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6 mb-20">
+            <h2 className="text-5xl font-display font-semibold text-slate-900">
+              Our <span className="gradient-text">Transformations</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              See the remarkable before and after results of our professional cleaning services
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {transformationProjects.map((project, index) => (
+              <Card 
+                key={index} 
+                className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              >
+                <div className="relative h-64 overflow-hidden cursor-pointer" onClick={() => toggleBeforeAfter(index)}>
+                  <img 
+                    src={beforeAfterStates[index] === 'before' ? project.before : project.after}
+                    alt={`${project.title} - ${beforeAfterStates[index]}`}
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                  />
+                  
+                  {/* Animated overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* Before/After Badge */}
+                  <div className="absolute top-4 left-4">
+                    <div className={`px-3 py-1 rounded-full text-white text-sm font-bold transition-all duration-300 ${
+                      beforeAfterStates[index] === 'before' 
+                        ? 'bg-red-500 animate-pulse' 
+                        : 'bg-green-500 animate-bounce'
+                    }`}>
+                      {beforeAfterStates[index] === 'before' ? 'BEFORE' : 'AFTER'}
+                    </div>
+                  </div>
+                  
+                  {/* Play button overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 animate-pulse">
+                      <Eye className="w-8 h-8 text-white" />
+                    </div>
+                  </div>
+                  
+                  {/* Type badge */}
+                  <div className="absolute top-4 right-4">
+                    <div className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-slate-700 text-sm font-medium">
+                      {project.type}
+                    </div>
+                  </div>
+                </div>
+                
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-display font-semibold mb-2 text-slate-900">{project.title}</h3>
+                  <p className="text-slate-600 mb-4 text-sm">{project.location}</p>
+                  <Button 
+                    variant="outline" 
+                    size="sm"
+                    className="w-full transition-all duration-300 hover:bg-slate-900 hover:text-white group-hover:scale-105"
+                    onClick={() => toggleBeforeAfter(index)}
+                  >
+                    {beforeAfterStates[index] === 'before' ? 'View After' : 'View Before'}
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -153,53 +346,146 @@ export default function Index() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-12">
-            {/* Commercial Cleaning */}
-            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white">
+            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2">
               <CardContent className="p-10 text-center">
-                <div className="bg-blue-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-blue-100 transition-colors duration-300">
+                <div className="bg-blue-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-300">
                   <Building2 className="w-10 h-10 text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Commercial Cleaning</h3>
                 <p className="text-slate-600 leading-relaxed mb-8">
                   Comprehensive office and commercial space cleaning with attention to detail
                 </p>
-                <div className="text-2xl font-display font-semibold text-slate-900">₹5,000+</div>
+                <div className="text-2xl font-display font-semibold gradient-text">₹5,000+</div>
               </CardContent>
             </Card>
 
-            {/* Restaurant Cleaning */}
-            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white">
+            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2">
               <CardContent className="p-10 text-center">
-                <div className="bg-green-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-green-100 transition-colors duration-300">
+                <div className="bg-green-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-green-100 group-hover:scale-110 transition-all duration-300">
                   <Utensils className="w-10 h-10 text-green-600" />
                 </div>
                 <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Restaurant Cleaning</h3>
                 <p className="text-slate-600 leading-relaxed mb-8">
                   Specialized kitchen and dining area deep cleaning and sanitization
                 </p>
-                <div className="text-2xl font-display font-semibold text-slate-900">₹8,000+</div>
+                <div className="text-2xl font-display font-semibold gradient-text">₹8,000+</div>
               </CardContent>
             </Card>
 
-            {/* Industrial Cleaning */}
-            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white">
+            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2">
               <CardContent className="p-10 text-center">
-                <div className="bg-purple-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-purple-100 transition-colors duration-300">
+                <div className="bg-purple-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-purple-100 group-hover:scale-110 transition-all duration-300">
                   <Factory className="w-10 h-10 text-purple-600" />
                 </div>
                 <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Industrial Cleaning</h3>
                 <p className="text-slate-600 leading-relaxed mb-8">
                   ISO-standard cleanroom maintenance and heavy-duty industrial cleaning
                 </p>
-                <div className="text-2xl font-display font-semibold text-slate-900">₹12,000+</div>
+                <div className="text-2xl font-display font-semibold gradient-text">₹12,000+</div>
               </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us - Simple */}
+      {/* How We Work - Animated Workflow */}
       <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6 mb-20">
+            <h2 className="text-5xl font-display font-semibold text-slate-900">
+              How We <span className="gradient-text">Work</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Our systematic approach to delivering exceptional cleaning results
+            </p>
+          </div>
+
+          {/* Animated Workflow */}
+          <div className="relative">
+            {/* Animated connection line */}
+            <div className="hidden lg:block absolute top-20 left-0 w-full h-1 bg-gradient-to-r from-transparent via-slate-200 to-transparent">
+              <div 
+                className="h-full bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-1000 ease-in-out"
+                style={{ 
+                  width: `${((activeStep + 1) / workflowSteps.length) * 100}%`,
+                  boxShadow: '0 0 20px rgba(59, 130, 246, 0.5)'
+                }}
+              ></div>
+            </div>
+
+            <div className="grid lg:grid-cols-4 gap-8">
+              {workflowSteps.map((step, index) => (
+                <div 
+                  key={step.id} 
+                  className={`relative group transition-all duration-500 ${
+                    index <= activeStep ? 'transform scale-105' : ''
+                  }`}
+                >
+                  <Card className={`border-0 bg-white shadow-lg hover:shadow-2xl transition-all duration-500 ${
+                    index === activeStep ? 'ring-4 ring-blue-500/50 shadow-2xl' : ''
+                  }`}>
+                    <CardContent className="p-8 text-center">
+                      {/* Animated step number */}
+                      <div className={`absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full flex items-center justify-center font-bold text-white transition-all duration-500 ${
+                        index <= activeStep 
+                          ? `bg-gradient-to-r ${step.color} scale-110 animate-pulse` 
+                          : 'bg-slate-300'
+                      }`}>
+                        {step.id}
+                      </div>
+
+                      {/* Animated icon */}
+                      <div className={`bg-gradient-to-br ${step.color} w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white transition-all duration-500 ${
+                        index === activeStep 
+                          ? 'animate-bounce scale-110' 
+                          : index < activeStep 
+                            ? 'scale-105' 
+                            : 'scale-100 opacity-60'
+                      }`}>
+                        {step.icon}
+                      </div>
+
+                      <h3 className="text-xl font-display font-semibold mb-4 text-slate-900">
+                        {step.title}
+                      </h3>
+                      <p className="text-slate-600 leading-relaxed">
+                        {step.description}
+                      </p>
+
+                      {/* Progress indicator */}
+                      {index === activeStep && (
+                        <div className="mt-4 w-full bg-slate-200 rounded-full h-2">
+                          <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full animate-pulse" style={{ width: '100%' }}></div>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+
+            {/* Manual step controls */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {workflowSteps.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveStep(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeStep 
+                      ? 'bg-blue-500 scale-125' 
+                      : index < activeStep 
+                        ? 'bg-green-500' 
+                        : 'bg-slate-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us - Simple */}
+      <section className="py-32 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div className="space-y-8">
@@ -212,37 +498,36 @@ export default function Index() {
               </p>
               
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">100% Professional & Reliable</h4>
-                    <p className="text-slate-600">Trained, vetted, and experienced cleaning professionals</p>
+                {[
+                  {
+                    title: "100% Professional & Reliable",
+                    description: "Trained, vetted, and experienced cleaning professionals"
+                  },
+                  {
+                    title: "Advanced Equipment",
+                    description: "State-of-the-art cleaning technology and eco-friendly products"
+                  },
+                  {
+                    title: "Trusted by Industry Leaders",
+                    description: "Proven track record with clients like TATA and major corporations"
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start space-x-4 group">
+                    <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1 group-hover:scale-110 transition-transform duration-300" />
+                    <div>
+                      <h4 className="font-semibold text-slate-900 mb-1">{item.title}</h4>
+                      <p className="text-slate-600">{item.description}</p>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">Advanced Equipment</h4>
-                    <p className="text-slate-600">State-of-the-art cleaning technology and eco-friendly products</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">Trusted by Industry Leaders</h4>
-                    <p className="text-slate-600">Proven track record with clients like TATA and major corporations</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className="bg-slate-50 rounded-3xl p-12">
+            <div className="bg-white rounded-3xl p-8 shadow-xl group hover:shadow-2xl transition-all duration-500">
               <img 
                 src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=600&h=600&fit=crop" 
                 alt="Professional cleaning equipment"
-                className="w-full h-80 object-cover rounded-2xl"
+                className="w-full h-80 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
@@ -250,9 +535,9 @@ export default function Index() {
       </section>
 
       {/* Simple Testimonial */}
-      <section className="py-32 bg-slate-50">
+      <section className="py-32 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Quote className="w-16 h-16 text-slate-300 mx-auto mb-8" />
+          <Quote className="w-16 h-16 text-slate-300 mx-auto mb-8 animate-pulse" />
           <blockquote className="text-2xl font-display text-slate-700 mb-8 leading-relaxed">
             "SK Cleaning Services transformed our office environment beyond expectations. 
             Their professional approach and attention to detail is unmatched."
@@ -261,7 +546,7 @@ export default function Index() {
             <img 
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
               alt="Client testimonial"
-              className="w-12 h-12 rounded-full"
+              className="w-12 h-12 rounded-full border-2 border-blue-500"
             />
             <div className="text-left">
               <div className="font-semibold text-slate-900">Rajesh Patel</div>
@@ -272,32 +557,6 @@ export default function Index() {
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Simple CTA */}
-      <section className="py-32 bg-slate-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <h2 className="text-5xl font-display font-semibold">
-            Ready to Transform Your Space?
-          </h2>
-          <p className="text-xl text-slate-300">
-            Contact us today for a free consultation and quote
-          </p>
-          
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto">
-            <div className="text-3xl font-display font-semibold mb-2">92094 47145</div>
-            <div className="text-slate-300">Available 24/7 • Pune & PCMC</div>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-10 py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-xl">
-              Get Free Quote
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-10 py-4 border-white text-white hover:bg-white/10 rounded-xl">
-              Call Now
-            </Button>
           </div>
         </div>
       </section>
