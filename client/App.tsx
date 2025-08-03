@@ -10,8 +10,6 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Services from "./pages/Services";
-import WhyChooseUs from "./pages/WhyChooseUs";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
