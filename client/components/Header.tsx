@@ -38,20 +38,22 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* CTA Button and Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <div className="hidden sm:flex items-center space-x-2 text-primary font-semibold">
-              <Phone className="w-4 h-4" />
-              <span>92094 47145</span>
-            </div>
-            <Button className="hidden lg:inline-flex">
-              Get Free Quote
+          {/* Action Icons and Mobile Menu */}
+          <div className="flex items-center space-x-3">
+            {/* Phone Icon */}
+            <button className="hidden sm:inline-flex p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
+              <Phone className="w-5 h-5" />
+            </button>
+
+            {/* CTA Button */}
+            <Button size="sm" className="hidden lg:inline-flex bg-slate-900 hover:bg-slate-800 rounded-xl px-6">
+              Get Quote
             </Button>
-            
+
             {/* Mobile menu button */}
             <button
               onClick={toggleMenu}
-              className="lg:hidden p-2 rounded-md text-foreground hover:text-primary hover:bg-accent"
+              className="lg:hidden p-2 rounded-md text-foreground hover:text-primary hover:bg-accent transition-colors duration-200"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
