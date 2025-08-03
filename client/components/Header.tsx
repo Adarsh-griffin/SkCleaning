@@ -86,13 +86,15 @@ export default function Header() {
                 Contact Us
               </Link>
               <div className="pt-4 border-t border-border">
-                <div className="flex items-center space-x-2 text-primary font-semibold mb-4">
-                  <Phone className="w-4 h-4" />
-                  <span>92094 47145</span>
+                <div className="flex items-center space-x-3">
+                  <button className="flex-1 flex items-center justify-center p-3 rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Call
+                  </button>
+                  <Button className="flex-1 bg-slate-900 hover:bg-slate-800 rounded-xl">
+                    Get Quote
+                  </Button>
                 </div>
-                <Button className="w-full">
-                  Get Free Quote
-                </Button>
               </div>
             </div>
           </div>
