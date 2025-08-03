@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Phone, Sparkles } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 
 export default function ReadyToTransform() {
   return (
