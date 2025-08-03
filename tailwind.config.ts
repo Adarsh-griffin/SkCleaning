@@ -5,6 +5,11 @@ export default {
   content: ["./client/**/*.{ts,tsx}"],
   prefix: "",
   theme: {
+    fontFamily: {
+      sans: ['Inter', 'system-ui', 'sans-serif'],
+      serif: ['Playfair Display', 'serif'],
+      display: ['Playfair Display', 'serif'],
+    },
     container: {
       center: true,
       padding: "2rem",
