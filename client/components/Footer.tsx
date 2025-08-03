@@ -74,10 +74,38 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-6 text-center">
-          <p className="text-gray-400 text-sm">
-            © 2024 SK Cleaning Services. All rights reserved. Trusted by TATA.
-          </p>
+        <div className="border-t border-gray-700 mt-8 pt-6">
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © 2024 SK Cleaning Services. All rights reserved. Trusted by TATA.
+            </p>
+
+            {/* Social Media Links - Footer */}
+            <div className="flex items-center space-x-4">
+              <span className="text-gray-400 text-sm">Follow us:</span>
+              <div className="flex items-center space-x-3">
+                <a
+                  href="https://instagram.com/skcleaningservices"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
+                  title="Follow us on Instagram"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+
+                <a
+                  href="https://wa.me/919209447145"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
+                  title="Chat with us on WhatsApp"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
