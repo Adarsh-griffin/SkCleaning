@@ -13,15 +13,16 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-primary text-white p-2 rounded-lg">
-              <div className="w-8 h-8 flex items-center justify-center font-bold text-xl">
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="bg-gradient-to-br from-primary to-blue-600 text-white p-2.5 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="w-8 h-8 flex items-center justify-center font-display font-bold text-xl">
                 SK
               </div>
             </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-foreground">SK Cleaning Services</span>
-              <span className="text-sm text-muted-foreground">Your Partner for Pristine & Hygienic Spaces</span>
+            <div className="hidden sm:block">
+              <span className="text-xl font-display font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                SK Cleaning Services
+              </span>
             </div>
           </Link>
 
