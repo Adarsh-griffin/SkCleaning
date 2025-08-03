@@ -34,12 +34,6 @@ export default function Footer() {
               <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">
                 About Us
               </Link>
-              <Link to="/services" className="block text-gray-300 hover:text-white transition-colors">
-                Services
-              </Link>
-              <Link to="/why-choose-us" className="block text-gray-300 hover:text-white transition-colors">
-                Why Choose Us
-              </Link>
               <Link to="/contact" className="block text-gray-300 hover:text-white transition-colors">
                 Contact Us
               </Link>
