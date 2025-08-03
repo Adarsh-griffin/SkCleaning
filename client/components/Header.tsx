@@ -26,20 +26,14 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium">
+          <nav className="hidden lg:flex items-center space-x-12">
+            <Link to="/" className="text-foreground hover:text-primary transition-colors font-medium text-lg">
               Home
             </Link>
-            <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link to="/about" className="text-foreground hover:text-primary transition-colors font-medium text-lg">
               About Us
             </Link>
-            <Link to="/services" className="text-foreground hover:text-primary transition-colors font-medium">
-              Services
-            </Link>
-            <Link to="/why-choose-us" className="text-foreground hover:text-primary transition-colors font-medium">
-              Why Choose Us
-            </Link>
-            <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium">
+            <Link to="/contact" className="text-foreground hover:text-primary transition-colors font-medium text-lg">
               Contact Us
             </Link>
           </nav>
