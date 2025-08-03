@@ -64,35 +64,21 @@ export default function Header() {
             <div className="py-4 space-y-4">
               <Link
                 to="/"
-                className="block text-foreground hover:text-primary transition-colors font-medium"
+                className="block text-foreground hover:text-primary transition-colors font-medium text-lg"
                 onClick={toggleMenu}
               >
                 Home
               </Link>
               <Link
                 to="/about"
-                className="block text-foreground hover:text-primary transition-colors font-medium"
+                className="block text-foreground hover:text-primary transition-colors font-medium text-lg"
                 onClick={toggleMenu}
               >
                 About Us
               </Link>
               <Link
-                to="/services"
-                className="block text-foreground hover:text-primary transition-colors font-medium"
-                onClick={toggleMenu}
-              >
-                Services
-              </Link>
-              <Link
-                to="/why-choose-us"
-                className="block text-foreground hover:text-primary transition-colors font-medium"
-                onClick={toggleMenu}
-              >
-                Why Choose Us
-              </Link>
-              <Link
                 to="/contact"
-                className="block text-foreground hover:text-primary transition-colors font-medium"
+                className="block text-foreground hover:text-primary transition-colors font-medium text-lg"
                 onClick={toggleMenu}
               >
                 Contact Us
