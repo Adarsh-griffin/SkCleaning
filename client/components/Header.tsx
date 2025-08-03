@@ -39,8 +39,31 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Action Icons and Mobile Menu */}
+          {/* Social Icons, Action Icons and Mobile Menu */}
           <div className="flex items-center space-x-3">
+            {/* Social Media Icons */}
+            <div className="hidden sm:flex items-center space-x-2">
+              {/* Instagram */}
+              <a
+                href="https://instagram.com/skcleaningservices"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/919209447145"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
+              >
+                <MessageCircle className="w-4 h-4" />
+              </a>
+            </div>
+
             {/* Phone Icon */}
             <button className="hidden sm:inline-flex p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
               <Phone className="w-5 h-5" />
