@@ -86,30 +86,7 @@ export default function Header() {
               >
                 Contact Us
               </Link>
-              <div className="pt-4 border-t border-border space-y-4">
-                {/* Social Media - Mobile */}
-                <div className="flex justify-center space-x-4">
-                  <a
-                    href="https://instagram.com/skcleaningservices"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white hover:scale-105 transition-all duration-300"
-                  >
-                    <Instagram className="w-4 h-4" />
-                    <span className="text-sm font-medium">Instagram</span>
-                  </a>
-
-                  <a
-                    href="https://wa.me/919209447145"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-white hover:scale-105 transition-all duration-300"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span className="text-sm font-medium">WhatsApp</span>
-                  </a>
-                </div>
-
+              <div className="pt-4 border-t border-border">
                 {/* Action Buttons */}
                 <div className="flex items-center space-x-3">
                   <button className="flex-1 flex items-center justify-center p-3 rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300">
