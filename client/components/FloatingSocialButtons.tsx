@@ -11,7 +11,7 @@ export default function FloatingSocialButtons() {
         className="group relative"
         title="Follow us on Instagram"
       >
-        <div className="p-4 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 animate-pulse">
+        <div className="p-4 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110">
           <Instagram className="w-6 h-6" />
         </div>
         
