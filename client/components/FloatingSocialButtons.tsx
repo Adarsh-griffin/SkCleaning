@@ -32,7 +32,7 @@ export default function FloatingSocialButtons() {
         className="group relative"
         title="Chat with us on WhatsApp"
       >
-        <div className="p-4 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 animate-pulse" style={{ animationDelay: '1s' }}>
+        <div className="p-4 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110">
           <MessageCircle className="w-6 h-6" />
         </div>
         
