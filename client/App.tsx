@@ -27,6 +27,7 @@ const App = () => (
       <BrowserRouter>
         <ScrollToTop />
         <FloatingSocialButtons />
+        <Chatbot />
         <div className="min-h-screen flex flex-col">
           <Header />
           <main className="flex-1">
