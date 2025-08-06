@@ -340,12 +340,12 @@ export default function Chatbot() {
     if (!isCollectingRequirements) return null;
 
     const currentQuestion = requirementQuestions[requirementStep];
-    
+
     if (currentQuestion.options) {
       return (
-        <div className="p-4 border-t bg-gray-50">
-          <div className="text-sm text-gray-600 mb-2">Select an option:</div>
-          <div className="grid grid-cols-2 gap-2">
+        <div className="p-3 sm:p-4 border-t bg-gray-50">
+          <div className="text-sm text-gray-600 mb-3">Select an option:</div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {currentQuestion.options.map(option => (
               <Button
                 key={option}
@@ -354,7 +354,7 @@ export default function Chatbot() {
                 onClick={() => {
                   handleRequirementResponse(option);
                 }}
-                className="text-xs"
+                className="text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px] justify-start"
               >
                 {option}
               </Button>
