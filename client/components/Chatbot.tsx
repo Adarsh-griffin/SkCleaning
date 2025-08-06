@@ -95,6 +95,35 @@ export default function Chatbot() {
     }
   }, [isOpen]);
 
+  // Prevent body scroll when chatbot is open on mobile
+  useEffect(() => {
+    if (isOpen) {
+      // Prevent body scroll on mobile
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${window.scrollY}px`;
+    } else {
+      // Restore body scroll
+      const scrollY = document.body.style.top;
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+      }
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+    };
+  }, [isOpen]);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
