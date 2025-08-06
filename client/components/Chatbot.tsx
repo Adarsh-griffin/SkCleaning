@@ -277,7 +277,7 @@ export default function Chatbot() {
                   variant="outline"
                   size="sm"
                   onClick={() => handleOptionClick('View Services & Pricing')}
-                  className="justify-start text-left hover:bg-blue-50"
+                  className="justify-start text-left hover:bg-blue-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px]"
                 >
                   🏢 View Services & Pricing
                 </Button>
@@ -285,7 +285,7 @@ export default function Chatbot() {
                   variant="outline"
                   size="sm"
                   onClick={() => handleOptionClick('Get a Quote')}
-                  className="justify-start text-left hover:bg-green-50"
+                  className="justify-start text-left hover:bg-green-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px]"
                 >
                   📋 Get a Quote
                 </Button>
@@ -293,7 +293,7 @@ export default function Chatbot() {
                   variant="outline"
                   size="sm"
                   onClick={() => handleOptionClick('Contact Information')}
-                  className="justify-start text-left hover:bg-purple-50"
+                  className="justify-start text-left hover:bg-purple-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px]"
                 >
                   📞 Contact Information
                 </Button>
@@ -301,24 +301,24 @@ export default function Chatbot() {
                   variant="outline"
                   size="sm"
                   onClick={() => handleOptionClick('FAQ')}
-                  className="justify-start text-left hover:bg-orange-50"
+                  className="justify-start text-left hover:bg-orange-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px]"
                 >
                   ❓ Frequently Asked Questions
                 </Button>
               </>
             )}
           </div>
-          
+
           {/* FAQ Questions as clickable options */}
           {message.content.includes('frequently asked questions') && (
-            <div className="mt-4 space-y-1">
+            <div className="mt-3 space-y-1">
               {predefinedQAs.map((qa, index) => (
                 <Button
                   key={index}
                   variant="ghost"
                   size="sm"
                   onClick={() => handleOptionClick(qa.question)}
-                  className="justify-start text-left hover:bg-blue-50 text-xs"
+                  className="justify-start text-left hover:bg-blue-50 text-xs p-2 h-auto min-h-[32px] w-full"
                 >
                   {qa.question}
                 </Button>
@@ -330,7 +330,7 @@ export default function Chatbot() {
     }
 
     return (
-      <div className="whitespace-pre-line">
+      <div className="whitespace-pre-line text-sm sm:text-base leading-relaxed">
         {message.content}
       </div>
     );
