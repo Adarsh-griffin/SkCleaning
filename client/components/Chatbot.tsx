@@ -453,7 +453,7 @@ export default function Chatbot() {
           {renderRequirementInput()}
 
           {/* Input */}
-          <div className="p-4 border-t bg-white">
+          <div className="p-3 sm:p-4 border-t bg-white">
             <div className="flex space-x-2">
               <Input
                 value={inputValue}
@@ -464,19 +464,19 @@ export default function Chatbot() {
                     : "Type your message..."
                 }
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                className="flex-1 border-gray-300 focus:border-blue-500"
+                className="flex-1 border-gray-300 focus:border-blue-500 text-sm sm:text-base h-10 sm:h-10"
               />
               <Button
                 onClick={handleSendMessage}
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4"
+                className="bg-blue-500 hover:bg-blue-600 text-white px-3 sm:px-4 min-w-[44px] h-10"
                 disabled={!inputValue.trim()}
               >
                 <Send className="w-4 h-4" />
               </Button>
             </div>
-            
+
             {allRequirements.length > 0 && (
-              <div className="text-xs text-gray-500 mt-2 text-center">
+              <div className="text-xs text-gray-500 mt-2 text-center leading-relaxed">
                 💾 {allRequirements.length} requirement(s) collected • Click download icon to export
               </div>
             )}
