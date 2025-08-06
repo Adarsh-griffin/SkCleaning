@@ -410,8 +410,11 @@ export default function Chatbot() {
       {isOpen && (
         <div className="fixed bottom-0 left-0 right-0 top-[25%] sm:bottom-6 sm:right-6 sm:left-auto sm:top-auto z-50 sm:w-96 sm:h-[600px] bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden sm:max-h-[80vh]">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-3 sm:p-4 flex items-center justify-between">
-            <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-3 sm:p-4 flex items-center justify-between relative">
+            {/* Mobile drag handle */}
+            <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-12 h-1 bg-white/30 rounded-full sm:hidden"></div>
+
+            <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1 mt-2 sm:mt-0">
               <div className="bg-white/20 p-1.5 sm:p-2 rounded-full flex-shrink-0">
                 <Bot className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
@@ -420,23 +423,24 @@ export default function Chatbot() {
                 <p className="text-xs opacity-90">Online • Ready to help</p>
               </div>
             </div>
-            <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
+            <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0 mt-2 sm:mt-0">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={exportToExcel}
-                className="text-white hover:bg-white/20 p-2"
+                className="text-white hover:bg-white/20 p-2 hidden sm:flex"
                 title="Export Requirements to Excel"
               >
                 <Download className="w-3 h-3 sm:w-4 sm:h-4" />
               </Button>
+              {/* Mobile close button - more prominent */}
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsOpen(false)}
-                className="text-white hover:bg-white/20 p-2"
+                className="text-white hover:bg-white/20 p-2 sm:p-2 w-8 h-8 sm:w-auto sm:h-auto rounded-full sm:rounded"
               >
-                <X className="w-4 h-4 sm:w-4 sm:h-4" />
+                <X className="w-5 h-5 sm:w-4 sm:h-4" />
               </Button>
             </div>
           </div>
