@@ -509,8 +509,19 @@ export default function Chatbot() {
             </div>
 
             {allRequirements.length > 0 && (
-              <div className="text-xs text-gray-500 mt-2 text-center leading-relaxed">
-                💾 {allRequirements.length} requirement(s) collected • Click download icon to export
+              <div className="flex items-center justify-between mt-2">
+                <div className="text-xs text-gray-500 leading-relaxed">
+                  💾 {allRequirements.length} requirement(s) collected
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={exportToExcel}
+                  className="sm:hidden text-gray-600 hover:bg-gray-100 p-1 h-auto"
+                  title="Export to Excel"
+                >
+                  <Download className="w-4 h-4" />
+                </Button>
               </div>
             )}
           </div>
