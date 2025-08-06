@@ -381,17 +381,17 @@ export default function Chatbot() {
       {isOpen && (
         <div className="fixed inset-4 sm:bottom-6 sm:right-6 sm:left-auto sm:top-auto z-50 sm:w-96 sm:h-[600px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden sm:max-h-[80vh]">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-4 flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="bg-white/20 p-2 rounded-full">
-                <Bot className="w-6 h-6" />
+          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white p-3 sm:p-4 flex items-center justify-between">
+            <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+              <div className="bg-white/20 p-1.5 sm:p-2 rounded-full flex-shrink-0">
+                <Bot className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
-              <div>
-                <h3 className="font-semibold">SK Cleaning Assistant</h3>
+              <div className="min-w-0 flex-1">
+                <h3 className="font-semibold text-sm sm:text-base truncate">SK Cleaning Assistant</h3>
                 <p className="text-xs opacity-90">Online • Ready to help</p>
               </div>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1 sm:space-x-2 flex-shrink-0">
               <Button
                 variant="ghost"
                 size="sm"
@@ -399,7 +399,7 @@ export default function Chatbot() {
                 className="text-white hover:bg-white/20 p-2"
                 title="Export Requirements to Excel"
               >
-                <Download className="w-4 h-4" />
+                <Download className="w-3 h-3 sm:w-4 sm:h-4" />
               </Button>
               <Button
                 variant="ghost"
@@ -407,7 +407,7 @@ export default function Chatbot() {
                 onClick={() => setIsOpen(false)}
                 className="text-white hover:bg-white/20 p-2"
               >
-                <X className="w-4 h-4" />
+                <X className="w-4 h-4 sm:w-4 sm:h-4" />
               </Button>
             </div>
           </div>
