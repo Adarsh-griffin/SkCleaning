@@ -9,10 +9,17 @@ export default function Footer() {
           {/* Company Info */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <div className="bg-primary text-white p-2 rounded-lg">
-                <div className="w-6 h-6 flex items-center justify-center font-bold text-sm">
-                  SK
-                </div>
+              <div className=" text-white p-2 rounded-lg">
+              <img 
+                src="/skcleanlogo.png" 
+                alt="SK Cleaning Services Logo" 
+                className="w-12 h-12 object-contain"
+                onError={(e) => {
+                  // Fallback to text if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
               </div>
               <div>
                 <h3 className="text-lg font-display font-semibold">SK Cleaning Services</h3>

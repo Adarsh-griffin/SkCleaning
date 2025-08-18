@@ -14,8 +14,18 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-gradient-to-br from-primary to-blue-600 text-white p-2.5 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <div className="w-8 h-8 flex items-center justify-center font-display font-bold text-xl">
+            <div className="bg-gradient-to-br from-primary to-white-600 p-1 rounded-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <img 
+                src="/skcleanlogo.png" 
+                alt="SK Cleaning Services Logo" 
+                className="w-12 h-12 object-contain"
+                onError={(e) => {
+                  // Fallback to text if image fails to load
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="w-8 h-8 flex items-center justify-center font-display font-bold text-xl text-white hidden">
                 SK
               </div>
             </div>

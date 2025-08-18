@@ -17,7 +17,8 @@ import {
   CheckSquare,
   Eye,
   Play,
-  Pause
+  Pause,
+  Home
 } from 'lucide-react';
 import Lenis from 'lenis';
 
@@ -33,19 +34,19 @@ export default function Index() {
 
   const heroImages = [
     {
-      url: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&h=800&fit=crop",
+      url: "/heroimg/heroimg1.png",
       alt: "Professional office cleaning team"
     },
     {
-      url: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop",
+      url: "/heroimg/heroimg2.png",
       alt: "Restaurant deep cleaning service"
     },
     {
-      url: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1200&h=800&fit=crop",
+      url: "/heroimg/heroimg3.png",
       alt: "Industrial facility cleaning"
     },
     {
-      url: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop",
+      url: "/heroimg/heroimg4.png",
       alt: "Commercial space cleaning"
     }
   ];
@@ -225,17 +226,18 @@ export default function Index() {
             </div>
 
             {/* Cycling Images Side */}
-            <div className="lg:justify-self-end">
-              <div className="relative">
+            <div className="lg:justify-self-end w-full">
+              <div className="relative w-full">
                 <div className="aspect-[4/5] max-w-lg mx-auto relative overflow-hidden rounded-3xl bg-slate-100 shadow-2xl">
                   {heroImages.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image.url}
-                      alt={image.alt}
+                                         <img
+                       key={index}
+                       src={image.url}
+                       alt={image.alt}
                       className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${
                         index === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
                       }`}
+                      
                     />
                   ))}
                   
@@ -346,42 +348,57 @@ export default function Index() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-12">
+            {/* Commercial Cleaning */}
             <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2">
-              <CardContent className="p-10 text-center">
+              <CardContent className="p-10">
                 <div className="bg-blue-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-300">
                   <Building2 className="w-10 h-10 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Commercial Cleaning</h3>
-                <p className="text-slate-600 leading-relaxed mb-8">
-                  Comprehensive office and commercial space cleaning with attention to detail
+                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900 text-center">Commercial Cleaning</h3>
+                <h4 className="text-lg font-semibold text-blue-600 mb-4 text-center">Pristine Workspaces. Elevated Impressions.</h4>
+                <p className="text-slate-600 leading-relaxed mb-6 text-sm">
+                  From boardrooms to shop floors, we deliver unmatched commercial cleaning designed to impress your clients and boost employee productivity. Our trained professionals handle every inch — carpets, glass, workstations, and high-traffic zones — with industry-grade precision. We work around your schedule, ensuring zero disruption and a consistently spotless environment that speaks volumes about your brand.
                 </p>
-                <div className="text-2xl font-display font-semibold gradient-text">₹5,000+</div>
+                <div className="text-center">
+                  <p className="text-blue-600 font-semibold mb-4 italic">"Because a clean business is good business."</p>
+                  <div className="text-2xl font-display font-semibold gradient-text">₹5,000+</div>
+                </div>
               </CardContent>
             </Card>
 
+            {/* Residential Cleaning */}
             <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2">
-              <CardContent className="p-10 text-center">
+              <CardContent className="p-10">
                 <div className="bg-green-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-green-100 group-hover:scale-110 transition-all duration-300">
-                  <Utensils className="w-10 h-10 text-green-600" />
+                  <Home className="w-10 h-10 text-green-600" />
                 </div>
-                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Restaurant Cleaning</h3>
-                <p className="text-slate-600 leading-relaxed mb-8">
-                  Specialized kitchen and dining area deep cleaning and sanitization
+                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900 text-center">Residential Cleaning</h3>
+                <h4 className="text-lg font-semibold text-green-600 mb-4 text-center">Your Home, Transformed into Perfection.</h4>
+                <p className="text-slate-600 leading-relaxed mb-6 text-sm">
+                  Whether it's deep cleaning for festivals, a move-in handover, or routine upkeep, we treat your home like it's our own. Our expert team uses advanced cleaning techniques and safe, eco-friendly products to revive every corner — from kitchen tiles to bathroom fixtures. Expect immaculate floors, dust-free surfaces, and a refreshing, healthy living space your family will love coming home to.
                 </p>
-                <div className="text-2xl font-display font-semibold gradient-text">₹8,000+</div>
+                <div className="text-center">
+                  <p className="text-green-600 font-semibold mb-4 italic">"Luxury cleaning, without the luxury price tag."</p>
+                  <div className="text-2xl font-display font-semibold gradient-text">₹8,000+</div>
+                </div>
               </CardContent>
             </Card>
 
+            {/* Renovation Services */}
             <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2">
-              <CardContent className="p-10 text-center">
+              <CardContent className="p-10">
                 <div className="bg-purple-50 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-purple-100 group-hover:scale-110 transition-all duration-300">
-                  <Factory className="w-10 h-10 text-purple-600" />
+                  <Brush className="w-10 h-10 text-purple-600" />
                 </div>
-                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Industrial Cleaning</h3>
-                <p className="text-slate-600 leading-relaxed mb-8">
-                  ISO-standard cleanroom maintenance and heavy-duty industrial cleaning
+                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900 text-center">Renovation Services</h3>
+                <h4 className="text-lg font-semibold text-purple-600 mb-4 text-center">From Concept to Completion — We Build Your Vision.</h4>
+                <p className="text-slate-600 leading-relaxed mb-6 text-sm">
+                  Whether you're upgrading furniture, revamping interiors, or executing a full-scale property renovation, our end-to-end service brings your ideas to life with precision and style. We handle planning, design, execution, and finishing under one roof — ensuring quality control at every stage. From modern apartments to sprawling villas and premium commercial spaces, we transform spaces into statement pieces that reflect your taste and needs.
                 </p>
-                <div className="text-2xl font-display font-semibold gradient-text">₹12,000+</div>
+                <div className="text-center">
+                  <p className="text-purple-600 font-semibold mb-4 italic">"We don't just renovate. We redefine."</p>
+                  <div className="text-2xl font-display font-semibold gradient-text">₹12,000+</div>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -534,8 +551,123 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Simple Testimonial */}
+      {/* Our Packages Section */}
       <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-6 mb-20">
+            <h2 className="text-5xl font-display font-semibold text-slate-900">
+              Our <span className="gradient-text">Packages</span>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              Choose the perfect level of perfection for your space with our exclusive cleaning packages
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Basic Package */}
+            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2 border-2 border-blue-100">
+              <CardContent className="p-8 text-center">
+                <div className="bg-blue-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-blue-100 group-hover:scale-110 transition-all duration-300">
+                  <span className="text-2xl">💎</span>
+                </div>
+                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Basic Package</h3>
+                <p className="text-slate-600 mb-6">Perfect for regular maintenance</p>
+                <div className="space-y-3 text-sm text-slate-600 mb-8">
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Standard deep cleaning
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Eco-friendly products
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    6-month warranty
+                  </div>
+                </div>
+                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                  Choose Basic
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Premium Package */}
+            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2 border-2 border-green-100 relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                Most Popular
+              </div>
+              <CardContent className="p-8 text-center">
+                <div className="bg-green-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-green-100 group-hover:scale-110 transition-all duration-300">
+                  <span className="text-2xl">⭐</span>
+                </div>
+                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Premium Package</h3>
+                <p className="text-slate-600 mb-6">Perfect for thorough cleaning</p>
+                <div className="space-y-3 text-sm text-slate-600 mb-8">
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Advanced cleaning techniques
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Premium eco-friendly products
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    1-year warranty
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Includes sanitization
+                  </div>
+                </div>
+                <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
+                  Choose Premium
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Luxury Package */}
+            <Card className="group hover:shadow-xl transition-all duration-500 border-0 bg-white transform hover:-translate-y-2 border-2 border-purple-100">
+              <CardContent className="p-8 text-center">
+                <div className="bg-purple-50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-purple-100 group-hover:scale-110 transition-all duration-300">
+                  <span className="text-2xl">👑</span>
+                </div>
+                <h3 className="text-2xl font-display font-semibold mb-4 text-slate-900">Luxury Package</h3>
+                <p className="text-slate-600 mb-6">Perfect for the uncompromising</p>
+                <div className="space-y-3 text-sm text-slate-600 mb-8">
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    White-glove service
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Premium products & equipment
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    2-year warranty
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Sanitization & deodorizing
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
+                    Post-service inspection
+                  </div>
+                </div>
+                <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+                  Choose Luxury
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Simple Testimonial */}
+      <section className="py-32 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Quote className="w-16 h-16 text-slate-300 mx-auto mb-8 animate-pulse" />
           <blockquote className="text-2xl font-display text-slate-700 mb-8 leading-relaxed">
