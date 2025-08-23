@@ -5,7 +5,7 @@ export default function FloatingSocialButtons() {
     <div className="fixed right-6 z-40 flex flex-col space-y-4" style={{ bottom: '25%' }}>
       {/* Instagram Button */}
       <a 
-        href="https://instagram.com/skcleaningservices" 
+        href="https://instagram.com/sk_servicespune" 
         target="_blank" 
         rel="noopener noreferrer"
         className="group relative"

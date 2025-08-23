@@ -66,36 +66,28 @@ type FlowState =
   | 'completed'
   | 'post_completion_options';
 
-  const predefinedQAs = [
-    {
-      question: "What areas do you serve?",
-      answer: "We serve Pune, PCMC, and surrounding areas with our premium cleaning and renovation services."
-    },
-    {
-      question: "What are your pricing ranges?",
-      answer: "Our packages are:\n• Basic: Immaculate cleaning at unmatched value\n• Premium: Every detail perfected for lasting freshness\n• Luxury: White-glove service for the truly uncompromising\n\nExact pricing depends on your specific requirements."
-    },
-    {
-      question: "How quickly can you start?",
-      answer: "We typically start within 24-48 hours. For urgent requirements, same-day service is available."
-    },
-    {
-      question: "Do you provide renovation services?",
-      answer: "Yes! We offer:\n• End-to-End Renovation\n• Furniture Upgradation\n• Painting Renovation\n• Custom renovation solutions"
-    },
-    {
-      question: "Are your products eco-friendly?",
-      answer: "Absolutely! We use only eco-friendly, non-toxic products that are safe for your family and the environment."
-    },
-    {
-      question: "Do you provide website maintenance?",
-      answer: "Yes! We provide complete 1-year website care including:\n• Regular website updates and improvements\n• Content changes and modifications\n• Speed and performance improvements\n• 24/7 support for any issues\n• Domain and hosting management"
-    },
-    {
-      question: "How does the chatbot work?",
-      answer: "Our smart chatbot automatically helps customers by:\n• Guiding them through service selection\n• Collecting their requirements\n• Providing instant quotes and information\n• Connecting them directly to our team\n• Working 24/7 to capture leads"
-    }
-  ];
+const predefinedQAs = [
+  {
+    question: "What areas do you serve?",
+    answer: "We serve Pune, PCMC, and surrounding areas with our premium cleaning and renovation services."
+  },
+  {
+    question: "What are your pricing ranges?",
+    answer: "Our packages are:\n• Basic: Immaculate cleaning at unmatched value\n• Premium: Every detail perfected for lasting freshness\n• Luxury: White-glove service for the truly uncompromising\n\nExact pricing depends on your specific requirements."
+  },
+  {
+    question: "How quickly can you start?",
+    answer: "We typically start within 24-48 hours. For urgent requirements, same-day service is available."
+  },
+  {
+    question: "Do you provide renovation services?",
+    answer: "Yes! We offer:\n• End-to-End Renovation\n• Furniture Upgradation\n• Painting Renovation\n• Custom renovation solutions"
+  },
+  {
+    question: "Are your products eco-friendly?",
+    answer: "Absolutely! We use only eco-friendly, non-toxic products that are safe for your family and the environment."
+  }
+];
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -673,13 +665,32 @@ export default function Chatbot() {
     }
   };
 
-  const completeConversation = () => {
+  const completeConversation = async () => {
     const finalData: ConversationData = {
       ...conversationData,
       timestamp: new Date()
     } as ConversationData;
     
     setAllConversations(prev => [...prev, finalData]);
+    
+    // Send to backend API if available
+    try {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://your-backend-url.railway.app';
+      const response = await fetch(`${backendUrl}/api/leads`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(finalData),
+      });
+      
+      if (response.ok) {
+        console.log('Lead saved to backend successfully');
+      }
+    } catch (error) {
+      console.log('Backend not available, lead saved locally only');
+    }
+    
     // Don't change flow state here - let the calling function handle it
   };
 
