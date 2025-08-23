@@ -1,8 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import leadsRouter from "./server/routes/leads";
-import { handleDemo } from "./server/routes/demo";
+import leadsRouter from "./server/routes/leads.js";
+import { handleDemo } from "./server/routes/demo.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
