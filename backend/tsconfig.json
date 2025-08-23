@@ -21,7 +21,7 @@
   },
   "include": [
     "index.ts",
-    "../server/**/*"
+    "server/**/*"
   ],
   "exclude": [
     "node_modules",

@@ -1,7 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import leadsRouter from "../server/routes/leads";
+import leadsRouter from "./server/routes/leads";
+import { handleDemo } from "./server/routes/demo";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 });
 
 // API routes
+app.get("/api/demo", handleDemo);
 app.use("/api", leadsRouter);
 
 // Error handling
