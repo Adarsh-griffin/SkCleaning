@@ -101,6 +101,18 @@ export default function Chatbot() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatbotRef = useRef<HTMLDivElement>(null);
 
+  // Expose openChatbot function globally
+  useEffect(() => {
+    (window as any).openChatbot = () => {
+      setIsOpen(true);
+      setHasTriggered(true);
+    };
+    
+    return () => {
+      delete (window as any).openChatbot;
+    };
+  }, []);
+
   // Auto-trigger logic
   useEffect(() => {
     if (!hasTriggered && !isOpen) {

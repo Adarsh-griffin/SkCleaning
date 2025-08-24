@@ -57,8 +57,12 @@ export default function Header() {
             </button>
 
             {/* CTA Button */}
-            <Button size="sm" className="hidden lg:inline-flex bg-slate-900 hover:bg-slate-800 rounded-xl px-6">
-              Get Quote
+            <Button 
+              size="sm" 
+              className="hidden lg:inline-flex bg-slate-900 hover:bg-slate-800 rounded-xl px-6"
+              onClick={() => (window as any).openChatbot?.()}
+            >
+            Book an Appointment
             </Button>
 
             {/* Mobile menu button */}
@@ -103,7 +107,10 @@ export default function Header() {
                     <Phone className="w-5 h-5 mr-2" />
                     Call
                   </button>
-                  <Button className="flex-1 bg-slate-900 hover:bg-slate-800 rounded-xl">
+                  <Button 
+                    className="flex-1 bg-slate-900 hover:bg-slate-800 rounded-xl"
+                    onClick={() => (window as any).openChatbot?.()}
+                  >
                     Get Quote
                   </Button>
                 </div>
