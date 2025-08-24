@@ -28,7 +28,8 @@ export default function Index() {
   const [beforeAfterStates, setBeforeAfterStates] = useState<{ [key: number]: 'before' | 'after' }>({
     0: 'before',
     1: 'before',
-    2: 'before'
+    2: 'before',
+    3: 'before'
   });
 
   const heroImages = [
@@ -71,6 +72,13 @@ export default function Index() {
       type: "Industrial",
       before: "/before after/indestrial floor before .png",
       after: "/before after/indestrial floor after.png"
+    },
+    {
+      title: "Medical Facility Deep Clean",
+      location: "Healthcare Center, PCMC",
+      type: "Healthcare",
+      before: "/before after/hospital before .png",
+      after: "/before after/hospital after.png"
     }
   ];
 
