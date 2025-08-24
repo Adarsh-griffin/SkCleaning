@@ -241,7 +241,16 @@ export default function Contact() {
                   <div className="space-y-3">
                     <div className="flex items-center space-x-3">
                       <Phone className="w-5 h-5 text-green-400" />
-                      <span className="text-lg font-semibold">92094 47145</span>
+                      <a 
+                        href="tel:9209447145" 
+                        className="text-lg font-semibold hover:text-green-400 transition-colors duration-300 cursor-pointer transform hover:scale-105"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.location.href = 'tel:9209447145';
+                        }}
+                      >
+                        92094 47145
+                      </a>
                     </div>
                     <div className="text-slate-300 text-sm">
                       Available 24/7 • Pune, PCMC & IT Hubs
@@ -293,7 +302,18 @@ export default function Contact() {
           </p>
           
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto">
-            <div className="text-3xl font-display font-semibold mb-2">92094 47145</div>
+            <a 
+              href="tel:9209447145" 
+              className="block group"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = 'tel:9209447145';
+              }}
+            >
+              <div className="text-3xl font-display font-semibold mb-2 bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent hover:from-green-400 hover:to-blue-400 transition-all duration-500 cursor-pointer transform hover:scale-110 group-hover:animate-pulse">
+                📞 92094 47145
+              </div>
+            </a>
             <div className="text-blue-200">Emergency Hotline • Always Available</div>
           </div>
           

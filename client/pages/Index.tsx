@@ -208,7 +208,12 @@ export default function Index() {
                 >
                 Book an Appointment
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-xl transition-all duration-300 hover:scale-105">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="text-lg px-8 py-4 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-xl transition-all duration-300 hover:scale-105"
+                  onClick={() => window.location.href = 'tel:9209447145'}
+                >
                   <Phone className="mr-2 w-5 h-5" />
                   92094 47145
                 </Button>

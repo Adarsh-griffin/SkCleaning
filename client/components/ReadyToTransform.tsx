@@ -31,7 +31,18 @@ export default function ReadyToTransform() {
             <div className="space-y-4">
               <div className="text-white">
                 <div className="text-sm opacity-80">Call Now for Instant Quote</div>
-                <div className="text-3xl font-display font-bold animate-pulse">92094 47145</div>
+                <a 
+                  href="tel:9209447145" 
+                  className="inline-block group"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = 'tel:9209447145';
+                  }}
+                >
+                  <div className="text-3xl font-display font-bold animate-pulse bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent hover:from-yellow-400 hover:to-pink-400 transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 group-hover:animate-bounce">
+                    📞 92094 47145
+                  </div>
+                </a>
               </div>
               <div className="text-white/80 text-sm">
                 Available 24/7 • Free Consultation • Pune & PCMC
@@ -40,22 +51,22 @@ export default function ReadyToTransform() {
           </div>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button 
+            {/* <Button 
               size="lg" 
               variant="secondary" 
               className="text-lg px-12 py-6 bg-white text-slate-900 hover:bg-gray-100 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               Get Free Quote
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button 
+            </Button> */}
+            {/* <Button 
               size="lg" 
               variant="outline" 
-              className="text-lg px-12 py-6 border-white text-white hover:bg-white/10 rounded-xl backdrop-blur-sm hover:scale-105 transition-all duration-300"
+              className="text-xl px-8 py-6 bg-white text-slate-900 hover:bg-gray-100 rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
             >
               <Phone className="mr-2 w-5 h-5" />
               Call Now
-            </Button>
+            </Button> */}
           </div>
 
           {/* Trust indicators */}
