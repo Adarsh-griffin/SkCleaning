@@ -45,10 +45,12 @@ export default function Index() {
       url: "/heroimg/heroimg3.png",
       alt: "Industrial facility cleaning"
     },
+   
     {
-      url: "/heroimg/heroimg4.png",
+      url: "/heroimg/heroimg5.png",
       alt: "Commercial space cleaning"
     }
+
   ];
 
   const transformationProjects = [
