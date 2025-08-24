@@ -28,8 +28,7 @@ export default function Index() {
   const [beforeAfterStates, setBeforeAfterStates] = useState<{ [key: number]: 'before' | 'after' }>({
     0: 'before',
     1: 'before',
-    2: 'before',
-    3: 'before'
+    2: 'before'
   });
 
   const heroImages = [
@@ -56,29 +55,22 @@ export default function Index() {
       title: "Corporate Office Deep Clean",
       location: "IT Hub, Pune",
       type: "Commercial",
-      before: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop&brightness=0.7&contrast=0.8",
-      after: "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=800&h=600&fit=crop&brightness=1.1&saturation=1.1"
+      before: "/before after/office clean before.png",
+      after: "/before after/office cleaning after.png"
     },
     {
       title: "Restaurant Kitchen Sanitization", 
       location: "Commercial District, PCMC",
       type: "Restaurant",
-      before: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&brightness=0.6&contrast=0.9",
-      after: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&brightness=1.2&saturation=1.2"
+      before: "/before after/restraunt kitchen before.png",
+      after: "/before after/restraunt kitchen after.png"
     },
     {
       title: "Industrial Floor Cleaning",
       location: "Manufacturing Unit, Pune", 
       type: "Industrial",
-      before: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&h=600&fit=crop&brightness=0.7&contrast=0.8",
-      after: "https://images.unsplash.com/photo-1581092446206-53b4e9d0c0a2?w=800&h=600&fit=crop&brightness=1.1&saturation=1.1"
-    },
-    {
-      title: "Medical Facility Deep Clean",
-      location: "Healthcare Center, PCMC",
-      type: "Healthcare",
-      before: "https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?w=800&h=600&fit=crop&brightness=0.6&contrast=0.9",
-      after: "https://images.unsplash.com/photo-1584432810601-6c7f27d2362b?w=800&h=600&fit=crop&brightness=1.2&saturation=1.2"
+      before: "/before after/indestrial floor before .png",
+      after: "/before after/indestrial floor after.png"
     }
   ];
 
