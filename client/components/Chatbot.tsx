@@ -685,7 +685,10 @@ export default function Chatbot() {
     
     setAllConversations(prev => [...prev, finalData]);
     
-    // Send to backend API if available
+    // Generate session ID
+    const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    
+    // Send lead data to backend API
     try {
       const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://your-backend-url.railway.app';
       const response = await fetch(`${backendUrl}/api/leads`, {
@@ -701,6 +704,41 @@ export default function Chatbot() {
       }
     } catch (error) {
       console.log('Backend not available, lead saved locally only');
+    }
+    
+    // Send chat history to backend API
+    try {
+      const backendUrl = import.meta.env.VITE_BACKEND_URL || 'https://your-backend-url.railway.app';
+      const chatHistoryData = {
+        sessionId,
+        clientName: finalData.name || 'Anonymous',
+        clientPhone: finalData.phone || 'N/A',
+        messages: messages.map(msg => ({
+          id: msg.id,
+          type: msg.type,
+          content: msg.content,
+          timestamp: msg.timestamp,
+          isOption: msg.isOption,
+          flowStateSnapshot: msg.flowStateSnapshot
+        })),
+        conversationData: finalData,
+        startTime: messages[0]?.timestamp || new Date(),
+        endTime: new Date()
+      };
+      
+      const chatResponse = await fetch(`${backendUrl}/api/chat-history`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(chatHistoryData),
+      });
+      
+      if (chatResponse.ok) {
+        console.log('Chat history saved to backend successfully');
+      }
+    } catch (error) {
+      console.log('Failed to save chat history to backend:', error);
     }
     
     // Don't change flow state here - let the calling function handle it
