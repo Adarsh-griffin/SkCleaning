@@ -700,6 +700,8 @@ export default function Chatbot() {
       
       if (response.ok) {
         console.log('Lead saved to backend successfully');
+        // Add notification that admin has been contacted
+        addBotMessage("✅ **Perfect! Your information has been submitted successfully.**\n\n📱 *Our admin team has been notified via WhatsApp and will contact you shortly.*\n\n⏰ *Expected response time: Within 2-4 hours*\n\nThank you for choosing SK Cleaning Services!", true, 1000);
       }
     } catch (error) {
       console.log('Backend not available, lead saved locally only');

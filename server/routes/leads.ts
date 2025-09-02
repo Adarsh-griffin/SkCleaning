@@ -1,7 +1,9 @@
 import express from 'express';
 import { z } from 'zod';
+import WhatsAppNotificationService from '../services/whatsappNotification';
 
 const router = express.Router();
+const whatsappService = new WhatsAppNotificationService();
 
 // Lead data validation schema
 const LeadSchema = z.object({
@@ -32,6 +34,24 @@ router.post('/leads', async (req, res) => {
     }
     
     leads.push(leadData);
+    
+    // Send WhatsApp notification to admin
+    try {
+      await whatsappService.sendNewLeadNotification({
+        name: leadData.name,
+        phone: leadData.phone,
+        serviceCategory: leadData.serviceCategory,
+        serviceType: leadData.serviceType,
+        area: leadData.area,
+        pincode: leadData.pincode,
+        selectedPackage: leadData.selectedPackage,
+        customRequest: leadData.customRequest
+      });
+      console.log('✅ WhatsApp notification sent successfully for new lead:', leadData.name);
+    } catch (notificationError) {
+      console.error('❌ Failed to send WhatsApp notification:', notificationError);
+      // Don't fail the lead creation if notification fails
+    }
     
     res.status(201).json({
       success: true,
