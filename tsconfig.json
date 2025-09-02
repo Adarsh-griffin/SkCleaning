@@ -40,7 +40,9 @@
   ],
   "exclude": [
     "node_modules", 
-    "dist",
-    "server/**/*"
+    "dist"
+  ],
+  "references": [
+    { "path": "./server" }
   ]
 }
