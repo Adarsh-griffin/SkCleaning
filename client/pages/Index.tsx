@@ -659,9 +659,9 @@ export default function Index() {
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 shadow-xl group hover:shadow-2xl transition-all duration-500">
+            <div className="bg-white rounded-xl p-4 shadow-xl group hover:shadow-2xl transition-all duration-500">
               <img 
-                src="https://images.unsplash.com/photo-0FTI9ceTUOc?w=800&h=600&fit=crop&crop=center" 
+                src="https://images.unsplash.com/photo-1585417238790-f6d290d6490c?q=80&w=1537&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                 alt="Professional cleaner in laboratory environment - Why Choose SK Cleaning Services"
                 className="w-full h-80 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
               />
