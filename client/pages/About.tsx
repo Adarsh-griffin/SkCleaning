@@ -256,7 +256,7 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 bg-slate-900 text-white">
+      <section className="py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <h2 className="text-5xl font-display font-semibold">
             Ready to Experience the Difference?

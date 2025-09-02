@@ -6,9 +6,9 @@ export default {
   prefix: "",
   theme: {
     fontFamily: {
-      sans: ['Inter', 'system-ui', 'sans-serif'],
-      serif: ['Playfair Display', 'serif'],
-      display: ['Playfair Display', 'serif'],
+      sans: ['Open Sans', 'Segoe UI', 'system-ui', 'sans-serif'],
+      serif: ['Montserrat', 'Segoe UI', 'system-ui', 'sans-serif'],
+      display: ['Montserrat', 'Segoe UI', 'system-ui', 'sans-serif'],
     },
     container: {
       center: true,

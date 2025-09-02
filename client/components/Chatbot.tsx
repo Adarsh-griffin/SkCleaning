@@ -1083,7 +1083,7 @@ export default function Chatbot() {
           {/* Header */}
           <div className="bg-gray-700 text-white p-4 flex items-center justify-between relative rounded-t-2xl"
             style={{
-              background: '#4a4a4a',
+              background: '#0F172A',
               borderBottom: '1px solid #e5e5e5'
             }}>
             
@@ -1153,9 +1153,7 @@ export default function Chatbot() {
                     </div>
                   ) : (
                     <div className="w-7 h-7 flex items-center justify-center">
-                      <img src="/favicon.ico" alt="SK Cleaning" className="w-7
-                      
-                      h-7" />
+                      <img src="/favicon.ico" alt="SK Cleaning" className="w-7 h-7" />
                     </div>
                   )}
                 </div>

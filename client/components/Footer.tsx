@@ -3,13 +3,13 @@ import { Phone, MapPin, Instagram, MessageCircle } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white py-12">
+    <footer className="bg-slate-900 text-white py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Company Info */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2">
-              <div className=" text-white p-2 rounded-lg">
+              <div className="p-2 rounded-lg">
               <img 
                 src="/skcleanlogo.png" 
                 alt="SK Cleaning Services Logo" 
@@ -22,10 +22,10 @@ export default function Footer() {
               />
               </div>
               <div>
-                <h3 className="text-lg font-display font-semibold">SK Cleaning Services</h3>
+                <h3 className="text-lg font-display font-semibold text-white">SK Cleaning Services</h3>
               </div>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-white text-sm">
               Your Partner for Pristine & Hygienic Spaces
             </p>
 
@@ -35,7 +35,7 @@ export default function Footer() {
                 href="https://instagram.com/skcleaningservices"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
+                className="p-2 rounded-full bg-[#FF8C00] text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
                 title="Follow us on Instagram"
               >
                 <Instagram className="w-4 h-4" />
@@ -45,7 +45,7 @@ export default function Footer() {
                 href="https://wa.me/919209447145"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
+                className="p-2 rounded-full bg-[#007BFF] text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
                 title="Chat with us on WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -56,13 +56,13 @@ export default function Footer() {
           {/* Quick Links */}
           <div className="text-center">
             <div className="flex justify-center space-x-8">
-              <Link to="/" className="text-gray-300 hover:text-white transition-colors text-sm">
+              <Link to="/" className="text-white hover:text-[#FF8C00] transition-colors text-sm font-medium">
                 Home
               </Link>
-              <Link to="/about" className="text-gray-300 hover:text-white transition-colors text-sm">
+              <Link to="/about" className="text-white hover:text-[#FF8C00] transition-colors text-sm font-medium">
                 About Us
               </Link>
-              <Link to="/contact" className="text-gray-300 hover:text-white transition-colors text-sm">
+              <Link to="/contact" className="text-white hover:text-[#FF8C00] transition-colors text-sm font-medium">
                 Contact Us
               </Link>
             </div>
@@ -71,31 +71,31 @@ export default function Footer() {
           {/* Contact Info */}
           <div className="space-y-3 text-right">
             <div className="flex items-center justify-end space-x-2">
-              <Phone className="w-4 h-4 text-primary" />
-              <span className="text-gray-300 text-sm">92094 47145</span>
+              <Phone className="w-4 h-4 text-[#FF8C00]" />
+              <span className="text-white text-sm">92094 47145</span>
             </div>
             <div className="flex items-center justify-end space-x-2">
-              <MapPin className="w-4 h-4 text-primary" />
-              <span className="text-gray-300 text-sm">Pune, PCMC & IT Hubs</span>
+              <MapPin className="w-4 h-4 text-[#FF8C00]" />
+              <span className="text-white text-sm">Pune, PCMC & IT Hubs</span>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-8 pt-6">
+        <div className="border-t border-[#d1cff0] mt-8 pt-6">
           <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              © 2024 SK Cleaning Services. All rights reserved. Trusted by TATA.
+            <p className="text-white text-sm">
+              © 2024 SK Cleaning Services. All rights reserved. Designed by LeadGate  .
             </p>
 
             {/* Social Media Links - Footer */}
             <div className="flex items-center space-x-4">
-              <span className="text-gray-400 text-sm">Follow us:</span>
+              <span className="text-white text-sm">Follow us:</span>
               <div className="flex items-center space-x-3">
                 <a
                   href="https://instagram.com/skcleaningservices"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
+                  className="p-2 rounded-full bg-[#FF8C00] text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
                   title="Follow us on Instagram"
                 >
                   <Instagram className="w-4 h-4" />
@@ -105,7 +105,7 @@ export default function Footer() {
                   href="https://wa.me/919209447145"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-gradient-to-br from-green-500 to-green-600 text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
+                  className="p-2 rounded-full bg-[#007BFF] text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
                   title="Chat with us on WhatsApp"
                 >
                   <MessageCircle className="w-4 h-4" />

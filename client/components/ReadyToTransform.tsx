@@ -3,7 +3,7 @@ import { ArrowRight, Phone } from 'lucide-react';
 
 export default function ReadyToTransform() {
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-white text-slate-900 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
@@ -21,7 +21,7 @@ export default function ReadyToTransform() {
             <span className="gradient-text">Your Space?</span>
           </h2>
           
-          <p className="text-xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xl text-black/90 leading-relaxed max-w-3xl mx-auto">
             Join 100+ satisfied clients who trust SK Cleaning Services for their premium cleaning needs. 
             Get your free consultation today and experience the difference.
           </p>
@@ -29,7 +29,7 @@ export default function ReadyToTransform() {
           {/* Contact highlight */}
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-md mx-auto transform hover:scale-105 transition-all duration-300">
             <div className="space-y-4">
-              <div className="text-white">
+              <div className="text-black/90">
                 <div className="text-sm opacity-80">Call Now for Instant Quote</div>
                 <a 
                   href="tel:9209447145" 
@@ -39,12 +39,12 @@ export default function ReadyToTransform() {
                     window.location.href = 'tel:9209447145';
                   }}
                 >
-                  <div className="text-3xl font-display font-bold animate-pulse bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent hover:from-yellow-400 hover:to-pink-400 transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 group-hover:animate-bounce">
+                  <div className="text-3xl font-display font-bold animate-pulse bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent hover:from-yellow-400 hover:to-pink-400 transition-all duration-500 cursor-pointer transform hover:scale-110 hover:rotate-1 group-hover:animate-bounce">
                     📞 92094 47145
                   </div>
                 </a>
               </div>
-              <div className="text-white/80 text-sm">
+              <div className="text-black/80 text-sm">
                 Available 24/7 • Free Consultation • Pune & PCMC
               </div>
             </div>
@@ -72,16 +72,16 @@ export default function ReadyToTransform() {
           {/* Trust indicators */}
           <div className="grid grid-cols-3 gap-8 pt-8 max-w-2xl mx-auto">
             <div className="text-center group">
-              <div className="text-2xl font-display font-bold text-white mb-1 group-hover:scale-110 transition-transform duration-300">100+</div>
-              <div className="text-white/70 text-sm">Happy Clients</div>
+              <div className="text-2xl font-display font-bold text-black mb-1 group-hover:scale-110 transition-transform duration-300">100+</div>
+              <div className="text-black/70 text-sm">Happy Clients</div>
             </div>
             <div className="text-center group">
-              <div className="text-2xl font-display font-bold text-white mb-1 group-hover:scale-110 transition-transform duration-300">24/7</div>
-              <div className="text-white/70 text-sm">Available</div>
+              <div className="text-2xl font-display font-bold text-black mb-1 group-hover:scale-110 transition-transform duration-300">24/7</div>
+              <div className="text-black/70 text-sm">Available</div>
             </div>
             <div className="text-center group">
-              <div className="text-2xl font-display font-bold text-white mb-1 group-hover:scale-110 transition-transform duration-300">TATA</div>
-              <div className="text-white/70 text-sm">Trusted</div>
+              <div className="text-2xl font-display font-bold text-black mb-1 group-hover:scale-110 transition-transform duration-300">TATA</div>
+              <div className="text-black/70 text-sm">Trusted</div>
             </div>
           </div>
         </div>
