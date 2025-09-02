@@ -6,7 +6,6 @@ import {
   MessageCircle, 
   X, 
   Send, 
-  Bot, 
   User, 
   Download,
   Phone,
@@ -1089,8 +1088,8 @@ export default function Chatbot() {
             }}>
             
             <div className="flex items-center space-x-3 min-w-0 flex-1">
-              <div className="bg-white/20 p-2 rounded-full flex-shrink-0">
-                <Bot className="w-5 h-5" />
+              <div className="flex-shrink-0">
+                <img src="/favicon.ico" alt="SK Cleaning" className="w-10 h-10" />
               </div>
               <div className="min-w-0 flex-1">
                 <h3 className="font-medium text-sm truncate">SK Cleaning</h3>
@@ -1153,8 +1152,10 @@ export default function Chatbot() {
                       <User className="w-3 h-3 text-white" />
                     </div>
                   ) : (
-                    <div className="bg-gray-600 w-7 h-7 rounded-full flex items-center justify-center">
-                      <Bot className="w-3 h-3 text-white" />
+                    <div className="w-7 h-7 flex items-center justify-center">
+                      <img src="/favicon.ico" alt="SK Cleaning" className="w-7
+                      
+                      h-7" />
                     </div>
                   )}
                 </div>

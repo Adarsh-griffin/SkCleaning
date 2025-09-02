@@ -326,7 +326,7 @@ export default function Index() {
             {/* Cycling Images Side */}
             <div className="lg:justify-self-end w-full">
               <div className="relative w-full">
-                <div className="aspect-[4/5] max-w-lg mx-auto relative overflow-hidden rounded-3xl bg-slate-100 shadow-2xl">
+                <div className="aspect-[4/5] max-w-lg mx-auto relative overflow-hidden rounded-l bg-slate-100 shadow-2xl">
                   {heroImages.map((image, index) => (
                                          <img
                        key={index}
@@ -483,7 +483,6 @@ export default function Index() {
                 </p>
                 <div className="text-center">
                   <p className="text-blue-600 font-semibold mb-4 italic">"Because a clean business is good business."</p>
-                  <div className="text-2xl font-display font-semibold gradient-text">₹5,000+</div>
                 </div>
               </CardContent>
             </Card>
@@ -501,7 +500,6 @@ export default function Index() {
                 </p>
                 <div className="text-center">
                   <p className="text-green-600 font-semibold mb-4 italic">"Luxury cleaning, without the luxury price tag."</p>
-                  <div className="text-2xl font-display font-semibold gradient-text">₹8,000+</div>
                 </div>
               </CardContent>
             </Card>
@@ -519,7 +517,6 @@ export default function Index() {
                 </p>
                 <div className="text-center">
                   <p className="text-purple-600 font-semibold mb-4 italic">"We don't just renovate. We redefine."</p>
-                  <div className="text-2xl font-display font-semibold gradient-text">₹12,000+</div>
                 </div>
               </CardContent>
             </Card>
