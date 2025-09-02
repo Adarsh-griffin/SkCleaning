@@ -661,8 +661,8 @@ export default function Index() {
 
             <div className="bg-white rounded-3xl p-8 shadow-xl group hover:shadow-2xl transition-all duration-500">
               <img 
-                src="/why to choose sk cleaning.png" 
-                alt="Why Choose SK Cleaning Services"
+                src="https://images.unsplash.com/photo-0FTI9ceTUOc?w=800&h=600&fit=crop&crop=center" 
+                alt="Professional cleaner in laboratory environment - Why Choose SK Cleaning Services"
                 className="w-full h-80 object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
               />
             </div>
