@@ -2,6 +2,7 @@
   "name": "sk-cleaning-backend",
   "version": "1.0.0",
   "description": "Backend API for SK Cleaning Services",
+  "type": "module",
   "main": "index.ts",
   "scripts": {
     "start": "node dist/index.js",

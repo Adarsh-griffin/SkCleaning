@@ -1,6 +1,6 @@
 import express from 'express';
 import { z } from 'zod';
-import WhatsAppNotificationService from '../services/whatsappNotification';
+import WhatsAppNotificationService from '../services/whatsappNotification.js';
 
 const router = express.Router();
 const whatsappService = new WhatsAppNotificationService();
