@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import leadsRouter from "./server/routes/leads.js";
+import chatHistoryRouter from "./server/routes/chat-history.js";
 import { handleDemo } from "./server/routes/demo.js";
 
 const app = express();
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 // API routes
 app.get("/api/demo", handleDemo);
 app.use("/api", leadsRouter);
+app.use("/api", chatHistoryRouter);
 
 // Error handling
 app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

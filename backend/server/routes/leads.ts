@@ -1,8 +1,9 @@
 import express from 'express';
 import { z } from 'zod';
-import googleSheetsService, { LeadData } from '../services/googleSheets.js';
+import WhatsAppNotificationService from '../services/whatsappNotification';
 
 const router = express.Router();
+const whatsappService = new WhatsAppNotificationService();
 
 // Lead data validation schema
 const LeadSchema = z.object({
@@ -19,7 +20,7 @@ const LeadSchema = z.object({
   timestamp: z.string()
 });
 
-// In-memory storage (fallback if Google Sheets is not configured)
+// In-memory storage for leads
 let leads: any[] = [];
 
 // Store lead
@@ -32,20 +33,36 @@ router.post('/leads', async (req, res) => {
       leadData.timestamp = new Date().toISOString();
     }
     
-    // Store in Google Sheets
+    // Add unique ID
+    const leadWithId = {
+      ...leadData,
+      id: `lead_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    };
+    
+    leads.push(leadWithId);
+    
+    // Send WhatsApp notification to admin
     try {
-      await googleSheetsService.storeLead(leadData as LeadData);
-    } catch (sheetsError) {
-      console.error('Failed to store in Google Sheets, falling back to memory:', sheetsError);
-      // Fallback to in-memory storage
-      leads.push(leadData);
+      await whatsappService.sendNewLeadNotification({
+        name: leadData.name,
+        phone: leadData.phone,
+        serviceCategory: leadData.serviceCategory,
+        serviceType: leadData.serviceType,
+        area: leadData.area,
+        pincode: leadData.pincode,
+        selectedPackage: leadData.selectedPackage,
+        customRequest: leadData.customRequest
+      });
+      console.log('✅ WhatsApp notification sent successfully for new lead:', leadData.name);
+    } catch (notificationError) {
+      console.error('❌ Failed to send WhatsApp notification:', notificationError);
+      // Don't fail the lead creation if notification fails
     }
     
     res.status(201).json({
       success: true,
       message: 'Lead stored successfully',
-      leadId: leads.length,
-      storedInGoogleSheets: true
+      leadId: leadWithId.id
     });
   } catch (error) {
     res.status(400).json({
@@ -57,43 +74,80 @@ router.post('/leads', async (req, res) => {
 });
 
 // Get all leads
-router.get('/leads', async (req, res) => {
-  try {
-    // Try to get leads from Google Sheets first
-    const sheetsLeads = await googleSheetsService.getAllLeads();
-    
-    if (sheetsLeads.length > 0) {
-      res.json({
-        success: true,
-        leads: sheetsLeads,
-        count: sheetsLeads.length,
-        source: 'google_sheets'
-      });
-    } else {
-      // Fallback to in-memory storage
-      res.json({
-        success: true,
-        leads: leads,
-        count: leads.length,
-        source: 'memory'
-      });
-    }
-  } catch (error) {
-    console.error('Error fetching leads:', error);
-    // Fallback to in-memory storage
-    res.json({
-      success: true,
-      leads: leads,
-      count: leads.length,
-      source: 'memory_fallback'
-    });
-  }
+router.get('/leads', (req, res) => {
+  res.json({
+    success: true,
+    leads: leads,
+    count: leads.length,
+    source: 'memory'
+  });
 });
 
-// Export leads to Excel format
+// Get lead by ID
+router.get('/leads/:id', (req, res) => {
+  const { id } = req.params;
+  const lead = leads.find(l => l.id === id);
+  
+  if (!lead) {
+    return res.status(404).json({
+      success: false,
+      message: 'Lead not found'
+    });
+  }
+  
+  res.json({
+    success: true,
+    lead: lead
+  });
+});
+
+// Update lead
+router.patch('/leads/:id', (req, res) => {
+  const { id } = req.params;
+  const updateData = req.body;
+  
+  const leadIndex = leads.findIndex(l => l.id === id);
+  if (leadIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: 'Lead not found'
+    });
+  }
+  
+  leads[leadIndex] = { ...leads[leadIndex], ...updateData };
+  
+  res.json({
+    success: true,
+    message: 'Lead updated successfully',
+    lead: leads[leadIndex]
+  });
+});
+
+// Delete lead
+router.delete('/leads/:id', (req, res) => {
+  const { id } = req.params;
+  
+  const leadIndex = leads.findIndex(l => l.id === id);
+  if (leadIndex === -1) {
+    return res.status(404).json({
+      success: false,
+      message: 'Lead not found'
+    });
+  }
+  
+  leads.splice(leadIndex, 1);
+  
+  res.json({
+    success: true,
+    message: 'Lead deleted successfully'
+  });
+});
+
+// Export leads to CSV format
 router.get('/leads/export', (req, res) => {
   try {
     const csvData = leads.map(lead => ({
+      'ID': lead.id || 'N/A',
       'Date': new Date(lead.timestamp).toLocaleDateString(),
       'Time': new Date(lead.timestamp).toLocaleTimeString(),
       'Name': lead.name || 'N/A',
@@ -122,76 +176,13 @@ router.get('/leads/export', (req, res) => {
   }
 });
 
-// Store chat history
-router.post('/chat-history', async (req, res) => {
-  try {
-    const { sessionId, clientName, clientPhone, messages, conversationData, startTime, endTime } = req.body;
-    
-    if (!sessionId || !clientName || !clientPhone || !messages) {
-      return res.status(400).json({
-        success: false,
-        message: 'Missing required fields: sessionId, clientName, clientPhone, messages'
-      });
-    }
-
-    const chatHistory = {
-      sessionId,
-      clientName,
-      clientPhone,
-      messages: messages.map((msg: any) => ({
-        ...msg,
-        timestamp: new Date(msg.timestamp)
-      })),
-      conversationData: conversationData || {},
-      startTime: new Date(startTime),
-      endTime: endTime ? new Date(endTime) : undefined
-    };
-
-    await googleSheetsService.storeChatHistory(chatHistory);
-    
-    res.status(201).json({
-      success: true,
-      message: 'Chat history stored successfully',
-      sessionId
-    });
-  } catch (error) {
-    console.error('Error storing chat history:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to store chat history',
-      error: error instanceof Error ? error.message : 'Unknown error'
-    });
-  }
-});
-
-// Get chat history
-router.get('/chat-history', async (req, res) => {
-  try {
-    const { sessionId } = req.query;
-    const chatHistory = await googleSheetsService.getChatHistory(sessionId as string);
-    
-    res.json({
-      success: true,
-      chatHistory,
-      count: chatHistory.length
-    });
-  } catch (error) {
-    console.error('Error fetching chat history:', error);
-    res.status(500).json({
-      success: false,
-      message: 'Failed to fetch chat history',
-      error: error instanceof Error ? error.message : 'Unknown error'
-    });
-  }
-});
-
 // Health check
 router.get('/health', (req, res) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),
     leadsCount: leads.length,
-    googleSheetsConfigured: !!process.env.GOOGLE_SHEET_ID
+    source: 'memory'
   });
 });
 
