@@ -30,7 +30,7 @@ I have successfully implemented a comprehensive admin portal system for SK Clean
 ### 2. Frontend System
 
 #### Secure Admin Portal (`client/pages/Admin.tsx`)
-- **Unique secure URL**: `/sk-admin-2024-secure`
+- **Unique secure URL**: `/sk-admin-2025-secure`
 - **Password protection** with session management
 - **Rate limiting** and security measures
 - **Responsive design** for all devices
@@ -53,7 +53,7 @@ I have successfully implemented a comprehensive admin portal system for SK Clean
 ### 3. Security & Access Control
 
 #### Admin Authentication
-- **Secure password**: `SKCleaning2024!`
+- **Secure password**: `SKCleaning2025!`
 - **Session management** with browser storage
 - **Unique URL path** to prevent unauthorized access
 - **Rate limiting** for login attempts

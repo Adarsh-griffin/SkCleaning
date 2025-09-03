@@ -37,7 +37,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               {/* Secure Admin Route - Unique URL that's hard to guess */}
-              <Route path="/sk-admin-2024-secure" element={<Admin />} />
+              <Route path="/sk-admin-2025-secure" element={<Admin />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
