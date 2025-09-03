@@ -1,3 +1,5 @@
+import twilio from 'twilio';
+
 interface WhatsAppNotificationData {
   name: string;
   phone: string;
@@ -11,38 +13,57 @@ interface WhatsAppNotificationData {
 
 export class WhatsAppNotificationService {
   private readonly adminPhoneNumber: string;
+  private readonly twilioClient: twilio.Twilio | null;
+  private readonly twilioFrom: string | null;
+  private readonly twilioTo: string | null;
 
   constructor() {
     this.adminPhoneNumber = '9370207558';
+
+    const accountSid = process.env.TWILIO_ACCOUNT_SID;
+    const authToken = process.env.TWILIO_AUTH_TOKEN;
+    const from = process.env.TWILIO_WHATSAPP_FROM; // e.g. 'whatsapp:+14155238886' (Twilio sandbox) or your approved number
+    const to = process.env.TWILIO_WHATSAPP_TO || (this.adminPhoneNumber ? `whatsapp:+91${this.adminPhoneNumber}` : null);
+
+    if (accountSid && authToken && from && to) {
+      this.twilioClient = twilio(accountSid, authToken);
+      this.twilioFrom = from;
+      this.twilioTo = to;
+    } else {
+      this.twilioClient = null;
+      this.twilioFrom = null;
+      this.twilioTo = null;
+    }
   }
 
   async sendNewLeadNotification(leadData: WhatsAppNotificationData): Promise<boolean> {
     try {
       const message = this.formatNotificationMessage(leadData);
-      
-      // Create WhatsApp Web link for manual sending
+
+      // If Twilio is configured, send automatically
+      if (this.twilioClient && this.twilioFrom && this.twilioTo) {
+        await this.twilioClient.messages.create({
+          from: this.twilioFrom,
+          to: this.twilioTo,
+          body: message,
+        });
+        console.log('✅ WhatsApp notification sent via Twilio');
+        return true;
+      }
+
+      // Fallback: Create WhatsApp Web link for manual sending
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/${this.adminPhoneNumber}?text=${encodedMessage}`;
-      
-      // Log the notification details
-      console.log('\n🚨 ===== WHATSAPP NOTIFICATION ===== 🚨');
+
+      console.log('\n🚨 ===== WHATSAPP NOTIFICATION (FALLBACK) ===== 🚨');
       console.log('📱 Admin Phone: +91' + this.adminPhoneNumber);
       console.log('🔗 WhatsApp Link: ' + whatsappUrl);
       console.log('\n📋 Message Content:');
       console.log(message);
-      console.log('\n💡 Instructions:');
-      console.log('1. Copy the WhatsApp link above');
-      console.log('2. Open it in your browser');
-      console.log('3. It will open WhatsApp with the pre-filled message');
-      console.log('4. Click send to notify the admin');
+      console.log('\n💡 Twilio not configured. To enable auto-send, set env vars:');
+      console.log('   TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM, TWILIO_WHATSAPP_TO');
       console.log('🚨 ===== END NOTIFICATION ===== 🚨\n');
-      
-      // In production, you can integrate with:
-      // - WhatsApp Business API
-      // - Twilio WhatsApp API
-      // - MessageBird WhatsApp API
-      // - Or use webhooks to your own WhatsApp bot
-      
+
       return true;
     } catch (error) {
       console.error('Error creating WhatsApp notification:', error);
@@ -88,12 +109,10 @@ export class WhatsAppNotificationService {
     return message;
   }
 
-  // Method to get the notification message for external use
   getNotificationMessage(leadData: WhatsAppNotificationData): string {
     return this.formatNotificationMessage(leadData);
   }
 
-  // Method to get the WhatsApp link for external use
   getWhatsAppLink(leadData: WhatsAppNotificationData): string {
     const message = this.formatNotificationMessage(leadData);
     const encodedMessage = encodeURIComponent(message);
