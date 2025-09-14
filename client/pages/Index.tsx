@@ -312,8 +312,8 @@ export default function Index() {
                   <div className="text-sm text-slate-500">Satisfaction</div>
                 </div>
                 <div className="text-center group">
-                  <div className="text-3xl font-display font-semibold text-slate-900 mb-1 transition-transform duration-300 group-hover:scale-110">24/7</div>
-                  <div className="text-sm text-slate-500">Support</div>
+                  <div className="text-3xl font-display font-semibold text-slate-900 mb-1 transition-transform duration-300 group-hover:scale-110">50+</div>
+                  <div className="text-sm text-slate-500">Happy Clients</div>
                 </div>
               </div>
             </div>
@@ -670,7 +670,7 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-6 mb-20">
             <h2 className="text-5xl font-display font-semibold text-slate-900">
-              Our <span className="gradient-text">Packages</span>
+              Home Cleaning <span className="gradient-text">Packages</span>
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Choose the perfect level of perfection for your space with our exclusive cleaning packages
@@ -700,7 +700,10 @@ export default function Index() {
                     6-month warranty
                   </div>
                 </div>
-                <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
+                <Button 
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  onClick={() => (window as any).openChatbot?.()}
+                >
                   Choose Basic
                 </Button>
               </CardContent>
@@ -735,7 +738,10 @@ export default function Index() {
                     Includes sanitization
                   </div>
                 </div>
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
+                <Button 
+                  className="w-full bg-green-600 hover:bg-green-700 text-white"
+                  onClick={() => (window as any).openChatbot?.()}
+                >
                   Choose Premium
                 </Button>
               </CardContent>
@@ -771,7 +777,10 @@ export default function Index() {
                     Post-service inspection
                   </div>
                 </div>
-                <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+                <Button 
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+                  onClick={() => (window as any).openChatbot?.()}
+                >
                   Choose Luxury
                 </Button>
               </CardContent>

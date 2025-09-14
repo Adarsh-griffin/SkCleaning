@@ -16,7 +16,7 @@ export default function About() {
     { number: "100+", label: "Projects Completed" },
     { number: "95%", label: "Client Satisfaction" },
     { number: "5+", label: "Years Experience" },
-    { number: "24/7", label: "Support Available" }
+    { number: "50+", label: "Happy Clients" }
   ];
 
   const values = [
@@ -266,10 +266,12 @@ export default function About() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="text-lg px-10 py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-xl">
-              Get Free Quote
-            </Button>
-            <Button size="lg" variant="outline" className="text-lg px-10 py-4 border-white text-white hover:bg-white/10 rounded-xl">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="text-lg px-10 py-4 bg-white text-slate-900 hover:bg-gray-100 rounded-xl"
+              onClick={() => window.location.href = 'tel:9209447145'}
+            >
               Contact Us
             </Button>
           </div>

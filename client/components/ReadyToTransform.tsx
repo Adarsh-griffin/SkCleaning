@@ -45,7 +45,7 @@ export default function ReadyToTransform() {
                 </a>
               </div>
               <div className="text-black/80 text-sm">
-                Available 24/7 • Free Consultation • Pune & PCMC
+                Available during business hours • Free Consultation • Pune & PCMC
               </div>
             </div>
           </div>
@@ -76,8 +76,8 @@ export default function ReadyToTransform() {
               <div className="text-black/70 text-sm">Happy Clients</div>
             </div>
             <div className="text-center group">
-              <div className="text-2xl font-display font-bold text-black mb-1 group-hover:scale-110 transition-transform duration-300">24/7</div>
-              <div className="text-black/70 text-sm">Available</div>
+              <div className="text-2xl font-display font-bold text-black mb-1 group-hover:scale-110 transition-transform duration-300">5+</div>
+              <div className="text-black/70 text-sm">Years Experience</div>
             </div>
             <div className="text-center group">
               <div className="text-2xl font-display font-bold text-black mb-1 group-hover:scale-110 transition-transform duration-300">TATA</div>

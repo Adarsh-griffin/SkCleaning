@@ -516,7 +516,7 @@ export default function Chatbot() {
         break;
 
       case 'Speak to an Executive':
-        addBotMessage("**Connect with Our Expert Team:**\n\n📞 **Call:** 92094 47145\n💬 **WhatsApp:** Instant response guaranteed\n\n🕐 **Available:** 24/7 for your convenience\n📍 **Service Areas:** Pune, PCMC & surrounding areas\n\n**Our executives are ready to craft your perfect solution!**", true, 1000, 'main_menu');
+        addBotMessage("**Connect with Our Expert Team:**\n\n📞 **Call:** 92094 47145\n💬 **WhatsApp:** Instant response guaranteed\n\n🕐 **Available:** Business hours for your convenience\n📍 **Service Areas:** Pune, PCMC & surrounding areas\n\n**Our executives are ready to craft your perfect solution!**", true, 1000, 'main_menu');
         break;
 
       case 'Got Questions?':
@@ -646,7 +646,7 @@ export default function Chatbot() {
         break;
 
       case 'Call Now':
-        addBotMessage("**📞 Call us now at: 92094 47145**\n\nOur executive is available 24/7 to assist you!\n\n**Service Areas:** Pune, PCMC & surrounding areas");
+        addBotMessage("**📞 Call us now at: 92094 47145**\n\nOur executive is available during business hours to assist you!\n\n**Service Areas:** Pune, PCMC & surrounding areas");
         setTimeout(() => {
           setFlowState('post_completion_options');
           addBotMessage("Can I help you with anything else?", true, 0, 'post_completion_options');

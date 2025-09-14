@@ -52,7 +52,10 @@ export default function Header() {
           {/* Action Icons and Mobile Menu */}
           <div className="flex items-center space-x-3">
             {/* Phone Icon */}
-            <button className="hidden sm:inline-flex p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
+            <button 
+              className="hidden sm:inline-flex p-3 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
+              onClick={() => window.location.href = 'tel:9209447145'}
+            >
               <Phone className="w-5 h-5" />
             </button>
 
@@ -103,7 +106,10 @@ export default function Header() {
               <div className="pt-4 border-t border-border">
                 {/* Action Buttons */}
                 <div className="flex items-center space-x-3">
-                  <button className="flex-1 flex items-center justify-center p-3 rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300">
+                  <button 
+                    className="flex-1 flex items-center justify-center p-3 rounded-xl bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                    onClick={() => window.location.href = 'tel:9209447145'}
+                  >
                     <Phone className="w-5 h-5 mr-2" />
                     Call
                   </button>

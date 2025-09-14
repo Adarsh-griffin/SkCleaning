@@ -19,7 +19,7 @@ export default function Contact() {
       icon: <Phone className="w-6 h-6 text-blue-600" />,
       title: "Phone",
       value: "92094 47145",
-      description: "Available 24/7 for emergency services"
+      description: "Available during business hours for emergency services"
     },
     {
       icon: <MapPin className="w-6 h-6 text-green-600" />,
@@ -30,7 +30,7 @@ export default function Contact() {
     {
       icon: <Clock className="w-6 h-6 text-purple-600" />,
       title: "Business Hours",
-      value: "24/7 Available",
+      value: "Business Hours",
       description: "Flexible scheduling to fit your needs"
     }
   ];
@@ -144,17 +144,17 @@ export default function Contact() {
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-slate-700">First Name</label>
-                        <Input placeholder="John" className="h-12 rounded-xl border-slate-200" />
+                        <Input placeholder="Adarsh" className="h-12 rounded-xl border-slate-200" />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-slate-700">Last Name</label>
-                        <Input placeholder="Doe" className="h-12 rounded-xl border-slate-200" />
+                        <Input placeholder="Dhawale" className="h-12 rounded-xl border-slate-200" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-slate-700">Email</label>
-                      <Input type="email" placeholder="john@example.com" className="h-12 rounded-xl border-slate-200" />
+                      <Input type="email" placeholder="example@gmail.com" className="h-12 rounded-xl border-slate-200" />
                     </div>
 
                     <div className="space-y-2">
@@ -170,12 +170,13 @@ export default function Contact() {
                         <option>Restaurant Cleaning</option>
                         <option>Industrial Cleaning</option>
                         <option>Office Deep Cleaning</option>
+                        <option>Home Cleaning</option>
                       </select>
                     </div>
 
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-slate-700">Property Size</label>
-                      <Input placeholder="e.g., 2000 sq ft" className="h-12 rounded-xl border-slate-200" />
+                      <Input placeholder="e.g., 2000 sq ft | 2bhk | 3bhk" className="h-12 rounded-xl border-slate-200" />
                     </div>
 
                     <div className="space-y-2">
@@ -206,18 +207,18 @@ export default function Contact() {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold mb-1">24/7 Availability</h4>
-                      <p className="text-slate-300">Emergency cleaning services available round the clock</p>
+                      <h4 className="font-semibold mb-1">Business Hours Availability</h4>
+                      <p className="text-slate-300">Emergency cleaning services available during business hours</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-start space-x-4">
+                  {/* <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold mb-1">Free Consultation</h4>
-                      <p className="text-slate-300">Complimentary site visit and customized cleaning plan</p>
+                      <h4 className="font-semibold mb-1">Professional Team at Your Service</h4>
+                      <p className="text-slate-300">Complimentary site visit an customized cleaning plan</p>
                     </div>
-                  </div>
+                  </div> */}
                   
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
@@ -230,8 +231,8 @@ export default function Contact() {
                   <div className="flex items-start space-x-4">
                     <CheckCircle className="w-6 h-6 text-green-400 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold mb-1">Eco-Friendly</h4>
-                      <p className="text-slate-300">Safe, environmentally responsible cleaning products</p>
+                      <h4 className="font-semibold mb-1">Premium Quality Chemicals</h4>
+                      <p className="text-slate-300">Best chemicals to ensure better hygiene</p>
                     </div>
                   </div>
                 </div>
@@ -253,7 +254,7 @@ export default function Contact() {
                       </a>
                     </div>
                     <div className="text-slate-300 text-sm">
-                      Available 24/7 • Pune, PCMC & IT Hubs
+                      Available during business hours • Pune, PCMC & IT Hubs
                     </div>
                   </div>
                 </div>
@@ -298,7 +299,7 @@ export default function Contact() {
             Need Emergency Cleaning?
           </h2>
           <p className="text-xl text-blue-100">
-            We're available 24/7 for urgent cleaning requirements
+            We're available during business hours for urgent cleaning requirements
           </p>
           
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 max-w-md mx-auto">
