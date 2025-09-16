@@ -55,7 +55,7 @@ export default function About() {
                 Your trusted partner for pristine and hygienic spaces. We specialize in delivering 
                 spotless, professional cleaning solutions across Pune, PCMC, and surrounding IT hubs.
               </p>
-              <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl">
+              <Button size="lg" className="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl" onClick={() => (window as any).openChatbot?.()}>
                 Get in Touch
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>

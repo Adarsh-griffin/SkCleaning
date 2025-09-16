@@ -32,7 +32,7 @@ export default function Footer() {
             {/* Social Media Links */}
             <div className="flex items-center space-x-3">
               <a
-                href="https://instagram.com/skcleaningservices"
+                href="https://instagram.com/sk_servicespune"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-full bg-[#FF8C00] text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
@@ -92,7 +92,7 @@ export default function Footer() {
               <span className="text-white text-sm">Follow us:</span>
               <div className="flex items-center space-x-3">
                 <a
-                  href="https://instagram.com/skcleaningservices"
+                  href="https://instagram.com/sk_servicespune"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-full bg-[#FF8C00] text-white hover:scale-110 transition-all duration-300 hover:shadow-lg"
