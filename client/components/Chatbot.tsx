@@ -72,7 +72,7 @@ const predefinedQAs = [
   },
   {
     question: "What are your pricing ranges?",
-    answer: "Our packages are:\n• Basic: Immaculate cleaning at unmatched value\n• Premium: Every detail perfected for lasting freshness\n• Luxury: White-glove service for the truly uncompromising\n\nExact pricing depends on your specific requirements."
+    answer: "Our packages are:\n• Basic: Dry floor cleaning + professional mopping (great for quick refreshes)\n• Premium: Furniture (outside), windows, lights/switchboards, wall dry clean\n• Luxury: Walls chemical wash, full furniture deep clean, appliances, floor scrubbing, post-inspection\n\nExact pricing depends on your specific requirements."
   },
   {
     question: "How quickly can you start?",
@@ -396,9 +396,28 @@ export default function Chatbot() {
           return;
         }
         setConversationData(prev => ({ ...prev, phone: input.replace(/\s/g, '') }));
-        setFlowState('package_selection');
         setWaitingForInput(false);
-        addBotMessage(`✅ **Perfect! Thank you ${conversationData.name}.**\n\nBased on your details, we can match you with our **exclusive packages** — each a different level of perfection.\n\nWould you like to explore them now before finalizing?`, true, 1000, 'package_selection');
+
+        if (['Commercial Cleaning', 'Renovation Services'].includes(conversationData.serviceCategory || '')) {
+          const summaryLines = [
+            `**Here is your request summary:**`,
+            `• **Service**: ${conversationData.serviceCategory || 'N/A'}${conversationData.serviceType ? ` — ${conversationData.serviceType}` : ''}`,
+            `• **Area**: ${conversationData.area || 'N/A'}`,
+            `• **Pincode**: ${conversationData.pincode || 'N/A'}`,
+            `• **Name**: ${conversationData.name || 'N/A'}`,
+            `• **Phone**: ${input.replace(/\s/g, '')}`
+          ].join('\n');
+
+          completeConversation();
+          addBotMessage(`✅ **Thank you!**\n\n${summaryLines}\n\nOur team will call you within 24 hours with next steps and a tailored quote.`, true);
+          setTimeout(() => {
+            setFlowState('post_completion_options');
+            addBotMessage('Can I help you with any other query?', true, 0, 'post_completion_options');
+          }, 2000);
+        } else {
+          setFlowState('package_selection');
+          addBotMessage(`✅ **Perfect! Thank you ${conversationData.name}.**\n\nBased on your details, we can match you with our **exclusive packages** — each a different level of perfection.\n\nWould you like to explore them now before finalizing?`, true, 1000, 'package_selection');
+        }
         break;
 
       case 'contact_input':
@@ -425,10 +444,29 @@ export default function Chatbot() {
           }
           
           setConversationData(prev => ({ ...prev, name, phone: phone.replace(/\s/g, '') }));
-          setFlowState('package_selection');
-          setTimeout(() => {
-            addBotMessage(`✅ **Perfect! Thank you ${name}.**\n\nBased on your details, we can match you with our **exclusive packages** — each a different level of perfection.\n\nWould you like to explore them now before finalizing?`, true);
-          }, 500);
+
+          if (['Commercial Cleaning', 'Renovation Services'].includes(conversationData.serviceCategory || '')) {
+            const summaryLines = [
+              `**Here is your request summary:**`,
+              `• **Service**: ${conversationData.serviceCategory || 'N/A'}${conversationData.serviceType ? ` — ${conversationData.serviceType}` : ''}`,
+              `• **Area**: ${conversationData.area || 'N/A'}`,
+              `• **Pincode**: ${conversationData.pincode || 'N/A'}`,
+              `• **Name**: ${name}`,
+              `• **Phone**: ${phone.replace(/\s/g, '')}`
+            ].join('\n');
+
+            completeConversation();
+            setTimeout(() => {
+              addBotMessage(`✅ **Thank you!**\n\n${summaryLines}\n\nOur team will call you within 24 hours with next steps and a tailored quote.`, true);
+              setFlowState('post_completion_options');
+              addBotMessage('Can I help you with any other query?', true, 0, 'post_completion_options');
+            }, 500);
+          } else {
+            setFlowState('package_selection');
+            setTimeout(() => {
+              addBotMessage(`✅ **Perfect! Thank you ${name}.**\n\nBased on your details, we can match you with our **exclusive packages** — each a different level of perfection.\n\nWould you like to explore them now before finalizing?`, true);
+            }, 500);
+          }
         } else {
           setTimeout(() => {
             addBotMessage("❌ **Invalid format!** Please provide both your **name and phone number** separated by a comma.\n\n**Format:** Name, Phone Number\n**Example:** John Doe, 9876543210");
@@ -575,6 +613,17 @@ export default function Chatbot() {
         setTimeout(() => setWaitingForInput(true), 1500);
         break;
 
+
+
+
+
+
+
+
+
+
+
+
       // Renovation Flow
       case 'End-to-End Renovation':
       case 'Furniture Upgradation':
@@ -598,7 +647,7 @@ export default function Chatbot() {
       // Package Selection
       case 'Yes, Show Me the Packages':
         setFlowState('package_details'); // New state for package details
-        addBotMessage("**🌟 Our Exclusive Packages:**\n\n**💎 Basic Package**\n• Standard deep cleaning\n• Eco-friendly products\n• 6-month warranty\n• Perfect for regular maintenance\n\n**⭐ Premium Package**\n• Advanced cleaning techniques\n• Premium eco-friendly products\n• 1-year warranty\n• Includes sanitization\n• Perfect for thorough cleaning\n\n**👑 Luxury Package**\n• White-glove service\n• Premium products & equipment\n• 2-year warranty\n• Includes sanitization & deodorizing\n• Post-service inspection\n• Perfect for the uncompromising\n\nWhich level of perfection would you prefer?", true, 1000, 'package_details');
+        addBotMessage("**🌟 Our Home Cleaning Packages:**\n\n**💎 Basic Care Package**\n• Dry floor cleaning\n• Professional mopping\n• Ideal for unfurnished flats, quick refreshes, light upkeep\n\n**⭐ Advanced Deep-Care Package** (Most Popular)\n• Washroom deep scrubbing (7 chemicals + 2 machines)\n• Furniture cleaning (outside surfaces)\n• Window chemical wash (streak-free)\n• Lights & switchboards cleaning\n• Wall dry cleaning\n\n**👑 Premium Shine & Protection Package**\n• Walls – dry + chemical wash\n• Complete furniture deep cleaning (inside + outside)\n• Appliances deep cleaning (fridge, microwave, washing machine, more)\n• Floor deep scrubbing (polished, stain-free finish)\n\nWhich package would you like to choose?", true, 1000, 'package_details');
         break;
 
       case 'No, Schedule a Call':
@@ -613,12 +662,12 @@ export default function Chatbot() {
         }, 3000);
         break;
 
-      case 'Basic':
-      case 'Premium':
-      case 'Luxury':
+      case 'Basic Care Package':
+      case 'Advanced Deep-Care Package':
+      case 'Premium Shine & Protection Package':
         setConversationData(prev => ({ ...prev, selectedPackage: option }));
         completeConversation();
-        addBotMessage(`**Excellent choice!** You've selected our **${option}** package.\n\nOur team will call you within 24 hours with your customized plan and next steps.\n\n📞 **Emergency Contact:** 92094 47145\n📸 **Follow us:** [Instagram Profile](https://instagram.com/skcleaningservices)\n\n**Thank you for choosing SK Cleaning!**`);
+        addBotMessage(`**Excellent choice!** You've selected our **${option}**.\n\nOur team will call you within 24 hours with your customized plan and next steps.\n\n📞 **Emergency Contact:** 92094 47145\n📸 **Follow us:** [Instagram Profile](https://instagram.com/skcleaningservices)\n\n**Thank you for choosing SK Cleaning!**`);
 
         // Wait 3 seconds then show post-completion options
         setTimeout(() => {
@@ -915,6 +964,16 @@ export default function Chatbot() {
           </>
         );
 
+
+
+
+
+
+
+
+
+        
+
       case 'renovation_type':
         return (
           <>
@@ -974,17 +1033,17 @@ export default function Chatbot() {
       case 'package_details':
         return (
           <>
-            <Button variant="outline" size="sm" onClick={() => handleOptionClick('Basic')} className="justify-start text-left hover:bg-blue-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px] border-blue-200">
-              <span className="hidden sm:inline">💎 Choose Basic Package</span>
-              <span className="sm:hidden">💎 Basic</span>
+            <Button variant="outline" size="sm" onClick={() => handleOptionClick('Basic Care Package')} className="justify-start text-left hover:bg-blue-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px] border-blue-200">
+              <span className="hidden sm:inline">💎 Choose Basic Care Package</span>
+              <span className="sm:hidden">💎 Basic Care</span>
             </Button>
-            <Button variant="outline" size="sm" onClick={() => handleOptionClick('Premium')} className="justify-start text-left hover:bg-green-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px] border-green-200">
-              <span className="hidden sm:inline">⭐ Choose Premium Package</span>
-              <span className="sm:hidden">⭐ Premium</span>
+            <Button variant="outline" size="sm" onClick={() => handleOptionClick('Advanced Deep-Care Package')} className="justify-start text-left hover:bg-green-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px] border-green-200">
+              <span className="hidden sm:inline">⭐ Choose Advanced Deep-Care Package</span>
+              <span className="sm:hidden">⭐ Advanced Care</span>
             </Button>
-            <Button variant="outline" size="sm" onClick={() => handleOptionClick('Luxury')} className="justify-start text-left hover:bg-purple-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px] border-purple-200">
-              <span className="hidden sm:inline">👑 Choose Luxury Package</span>
-              <span className="sm:hidden">👑 Luxury</span>
+            <Button variant="outline" size="sm" onClick={() => handleOptionClick('Premium Shine & Protection Package')} className="justify-start text-left hover:bg-purple-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px] border-purple-200">
+              <span className="hidden sm:inline">👑 Choose Premium Shine & Protection</span>
+              <span className="sm:hidden">👑 Premium Shine</span>
             </Button>
             <Button variant="outline" size="sm" onClick={() => handleOptionClick('Request a Call')} className="justify-start text-left hover:bg-orange-50 text-xs sm:text-sm p-2 sm:p-3 h-auto min-h-[36px] border-orange-200">
               <span className="hidden sm:inline">📞 Request a Call Instead</span>
